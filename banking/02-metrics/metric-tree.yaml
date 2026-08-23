@@ -1,0 +1,279 @@
+# Metric tree — VN Retail Banking
+#
+# Shape lay tu [v1] datapot-analytics-agent/framework/templates/metric-tree.yaml
+# Noi dung lay tu [v2] datapot-analytic-agent-v2/knowledge/business-model.md (muc Banking domain)
+#
+# source: v2  = tu estate synthetic banking-flagship — cau truc dang tin, so lieu khong that
+#         v1  = tu template cua repo v1
+#         TCB = can dien tu bao cao cong khai Techcombank (xem ../references/)
+#
+# status: measurable     = estate v2 do duoc
+#         partial        = do duoc mot phan, thieu cau phan
+#         not-measurable = estate v2 KHONG co feed du lieu can thiet
+
+domain: banking
+
+metrics:
+
+  # ---------------------------------------------------------------- GROWTH
+  - id: total_deposit_balance
+    display_name: Total Deposit Balance
+    formula: "SUM(Balance_VND) at month-end"
+    category: growth
+    tier: headline_kpi
+    frequency: monthly
+    additivity: semi-additive        # LASTNONBLANK over Date — never sum across months
+    fact_table: FactAccountSnapshots
+    source: v2
+    status: measurable
+    children:
+      - id: casa_balance
+        display_name: CASA Balance
+        formula: "Deposit Balance WHERE ProductSubCategory IN (CA, SA)"
+        category: growth
+        note: "subset driver, khong phai metric doc lap"
+        source: v2
+        status: measurable
+      - id: casa_achievement_pct
+        display_name: CASA Achievement %
+        formula: "CASA Balance / CASA Target"
+        category: growth
+        note: "target o grain branch x month — phai unpivot BranchTargets truoc khi join"
+        source: v2
+        status: measurable
+      - id: casa_ratio
+        display_name: CASA Ratio
+        formula: "CASA Balance / Total Deposit Balance"
+        category: growth
+        note: "TCB cong bo chi so nay; v2 co du cau phan de tinh nhung khong dinh nghia san"
+        source: TCB
+        status: measurable
+        tcb_reported_value: "38,3% (2Q26)"
+        tcb_note: "giam tu 41,1% (2Q25); CASA la nguon von re nhat -> CASA roi thi chi phi von len va NIM co"
+
+  - id: loan_disbursed
+    display_name: Loan Disbursed
+    formula: "SUM(disbursed amount)"
+    category: growth
+    tier: headline_kpi
+    frequency: monthly
+    additivity: additive             # event-grain FLOW — khong phai stock/du no
+    fact_table: FactLoanOriginations
+    source: v2
+    status: measurable
+    children:
+      - id: originations_count
+        display_name: Originations Count
+        formula: "COUNTROWS(FactLoanOriginations)"
+        source: v2
+      - id: avg_loan_size
+        display_name: Avg Loan Size
+        formula: "Loan Disbursed / Originations Count"
+        source: v2
+      - id: weighted_avg_interest_rate
+        display_name: Weighted Avg Interest Rate
+        formula: "SUM(rate * amount) / SUM(amount)"
+        note: "binh quan gian don cua lai suat la SAI"
+        source: v2
+      - id: loan_target_achievement_pct
+        display_name: Loan Target Achievement %
+        formula: "Loan Disbursed / Loan Target"
+        source: v2
+
+  - id: transaction_value
+    display_name: Transaction Value & Volume
+    formula: "SUM(Amount_VND) ; COUNTROWS()"
+    category: growth
+    additivity: additive
+    fact_table: FactTransactions
+    warning: "Amount_VND CO DAU: Debit am, Credit duong. Tong thang se triet tieu nhau."
+    source: v2
+    status: measurable
+
+  # ---------------------------------------------------------------- SAFETY
+  - id: npl_ratio
+    display_name: NPL Ratio
+    formula: "NPL Balance / Total Balance"
+    category: risk
+    tier: headline_kpi
+    frequency: monthly
+    weighting: balance-weighted      # phan quyet maintainer 2026-07-20: headline la balance-weighted
+    fact_table: FactAccountSnapshots
+    regulation: "Nguong nhom nao la NPL la QUY DINH (Thong tu NHNN), khong phai lua chon phan tich"
+    source: v2
+    status: measurable
+    children:
+      - id: npl_account_ratio
+        display_name: NPL Account Ratio
+        formula: "NPL Accounts / Total Accounts"
+        note: "cut phu — cung ten NPL nhung khac mau so"
+        source: v2
+      - id: npl_balance_by_group
+        display_name: NPL Balance by Group
+        formula: "SUM(Balance_VND) BY NPLGroup"
+        note: "thang 6 lop; NPLGroup la degenerate dimension tren fact"
+        source: v2
+      - id: npl_migration
+        display_name: NPL Migration / roll-rate
+        formula: "net movement between NPLGroup classes month-over-month"
+        note: "can 2 cuoi thang lien ke; thang dau la BLANK, khong phai 0"
+        source: v2
+
+  # --------------------------------------------------------------- LOYALTY
+  - id: nps
+    display_name: Net Promoter Score
+    formula: "%Promoters - %Detractors"
+    category: satisfaction
+    tier: headline_kpi
+    fact_table: FactNPS
+    note: "hieu cua hai ty le, khong phai diem trung binh"
+    source: v2
+    status: measurable
+    children:
+      - id: nps_mix
+        display_name: Promoter / Passive / Detractor mix
+        formula: "share of each NPSCategory"
+        source: v2
+      - id: detractor_reason_distribution
+        display_name: Detractor primary-reason distribution
+        formula: "distribution of PrimaryReason"
+        warning: "PrimaryReason null 47-50%, lech han: Detractor null 0% vs Promoter null ~73%"
+        source: v2
+
+  # ------------------------------------------------------ EFFICIENCY / INCOME
+  - id: fee_income
+    display_name: Fee Income
+    formula: "SUM(Fee_VND)"
+    category: profitability
+    fact_table: FactTransactions
+    note: "chi la thu phi — KHONG phai thu nhap lai"
+    source: v2
+    status: measurable
+    children:
+      - id: estimated_interest_income
+        display_name: Estimated Interest Income
+        formula: "SUM(loan month-end balance * BaseRate / 12)"
+        warning: "rough accrual, NOT booked — so uoc luong, khong phai so hach toan"
+        source: v2
+        status: partial
+      - id: estimated_total_revenue
+        display_name: Estimated Total Revenue
+        formula: "Fee Income + Estimated Interest Income"
+        note: "proxy, khong phai doanh thu"
+        source: v2
+        status: partial
+      - id: revenue_achievement_pct
+        display_name: Revenue Achievement %
+        formula: "Estimated Total Revenue / Total Revenue Target"
+        source: v2
+
+  - id: channel_mix_pct
+    display_name: Channel Mix % (digital adoption)
+    formula: "digital txns / total txns"
+    category: growth
+    definition: "digital = Mobile + Internet ; non-digital = counter + ATM"
+    note: "xu huong 36 thang cho thay dich chuyen quay -> digital"
+    source: v2
+    status: measurable
+
+  - id: service_time_sla
+    display_name: Service-Time SLA
+    formula: "AVERAGE(ServiceTimeMinutes)"
+    category: satisfaction
+    warning: "CHI O QUAY GIAO DICH — ~79% null o kenh khac (structural). Filter ve 'Quay giao dich' TRUOC khi tinh."
+    source: v2
+    status: measurable
+
+  - id: product_penetration
+    display_name: Product Penetration
+    formula: "AVERAGEX(months, products held / customers)"
+    category: growth
+    note: "~3 san pham/khach; phai AVERAGEX THEO THANG moi dung grain"
+    fact_table: FactCustomerProductMonth
+    source: v2
+    status: measurable
+
+  # =========================================================================
+  # TANG P&L / VON — estate v2 KHONG do duoc. Cong thuc NIM lay tu [v1].
+  # Dien gia tri that tu bao cao TCB trong ../references/
+  # =========================================================================
+
+  - id: net_interest_margin
+    display_name: Net Interest Margin
+    formula: "Net Interest Income / Average Earning Assets"
+    category: profitability
+    tier: headline_kpi
+    frequency: monthly
+    source: v1
+    status: not-measurable
+    missing_feeds: [interest_expense, cost_of_funds, average_earning_assets]
+    tcb_reported_value: "3,6% (truot 12 thang, 2Q26)"
+    tcb_note: "6M25 3,9% -> 6M26 3,6% (-20bps); NIM theo so du cuoi ky 3,5%"
+    children:
+      - id: net_interest_income
+        display_name: Net Interest Income
+        formula: "Interest Income - Interest Expense"
+        source: v1
+        status: not-measurable
+        children:
+          - id: interest_income
+            display_name: Interest Income
+            formula: "Loan Balance * Average Yield"
+            source: v1
+            status: partial           # v2 co du no + BaseRate, nhung la uoc luong
+          - id: interest_expense
+            display_name: Interest Expense
+            formula: "Deposit Balance * Cost of Funds"
+            source: v1
+            status: not-measurable
+            missing_feeds: [cost_of_funds]
+            children:
+              - id: cost_of_funds
+                display_name: Cost of Funds
+                formula: "interest expense / average interest-bearing liabilities"
+                category: profitability
+                source: TCB
+                status: not-measurable
+                tcb_reported_value: "4,6% (6M26) ; ~4,8% (quy 2Q26)"
+                tcb_note: "6M25 3,5% -> 6M26 4,6% (+107bps). Day la nua quyet dinh NIM ma estate v2 khong co."
+
+  - id: cost_to_income_ratio
+    display_name: CIR — Cost to Income Ratio
+    formula: "Operating Expense / Total Operating Income"
+    category: profitability
+    source: TCB
+    status: not-measurable
+    missing_feeds: [operating_expense]
+    tcb_reported_value: "30,9% (quy 2Q26) ; 29,7% (6M26)"
+    tcb_note: "kiem chung: 4.620 / 14.942 = 30,9%"
+
+  - id: credit_cost
+    display_name: Credit Cost
+    formula: "Provision expense / Average loan balance"
+    category: risk
+    source: TCB
+    status: not-measurable
+    missing_feeds: [provision_expense]
+    note: "day la mat noi NPLGroup chuyen hoa thanh P&L — mat xich thieu giua SAFETY va profitability"
+    tcb_reported_value: "0,5% (12 thang gan nhat, 2Q26)"
+    tcb_note: "NPL 1,15% nhung credit cost chi 0,5%; ty le bao phu no xau 125,5%"
+
+  - id: return_on_equity
+    display_name: ROE
+    formula: "Net profit after tax / Average shareholders equity"
+    category: profitability
+    source: TCB
+    status: not-measurable
+    missing_feeds: [net_profit, equity]
+    tcb_reported_value: "16,0% (truot 12 thang, 2Q26)"
+    tcb_note: "6M25 14,5% -> 6M26 16,0% (+151bps); ROA LTM 2,4%"
+
+  - id: capital_adequacy_ratio
+    display_name: CAR — Capital Adequacy Ratio
+    formula: "Own capital / Risk-weighted assets"
+    category: liquidity
+    source: TCB
+    status: not-measurable
+    missing_feeds: [own_capital, risk_weighted_assets]
+    tcb_reported_value: "15,0% (Basel II, 30/06/2026)"
+    tcb_note: "cap 1 = 14,0%; giam tu 15,2% (1Q26) do chi ~5 nghin ty co tuc tien mat thang 6"
