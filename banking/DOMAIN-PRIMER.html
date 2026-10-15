@@ -1,0 +1,2401 @@
+﻿<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nhập môn domain ngân hàng Việt Nam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:opsz,wght@6..72,600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+:root{
+  --bg:#F5F7F7; --surface:#FFFFFF; --ink:#172224; --muted:#56676A; --rule:#D9E1E1;
+  --code-bg:#EBF0F0; --row:#F1F5F5; --accent:#0F5F63; --accent-soft:color-mix(in srgb,var(--accent) 12%,transparent);
+  --warn-bg:#FDF3E4; --warn-rule:#D98E2B;
+  --t-nen:#2E6A3E; --t-nen-bg:#E1F0E4; --t-qd:#1D4C8A; --t-qd-bg:#E0EAF7;
+  --t-bay:#96460A; --t-bay-bg:#FBE9D8; --t-case:#6A3B8B; --t-case-bg:#EEE5F6;
+  --t-other:#56676A; --t-other-bg:#E6ECEC;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Be Vietnam Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#101617; --surface:#172022; --ink:#DCE5E6; --muted:#93A4A7; --rule:#2A3639;
+    --code-bg:#1B2527; --row:#141C1E; --accent:#6CC5C0;
+    --warn-bg:#2A2114; --warn-rule:#B7792A;
+    --t-nen:#8FD0A0; --t-nen-bg:#1C3324; --t-qd:#9CC0F2; --t-qd-bg:#1A2B44;
+    --t-bay:#F2B27A; --t-bay-bg:#3A2515; --t-case:#CDA8EC; --t-case-bg:#2E2140;
+    --t-other:#A8B6B8; --t-other-bg:#243032;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#101617; --surface:#172022; --ink:#DCE5E6; --muted:#93A4A7; --rule:#2A3639;
+  --code-bg:#1B2527; --row:#141C1E; --accent:#6CC5C0;
+  --warn-bg:#2A2114; --warn-rule:#B7792A;
+  --t-nen:#8FD0A0; --t-nen-bg:#1C3324; --t-qd:#9CC0F2; --t-qd-bg:#1A2B44;
+  --t-bay:#F2B27A; --t-bay-bg:#3A2515; --t-case:#CDA8EC; --t-case-bg:#2E2140;
+  --t-other:#A8B6B8; --t-other-bg:#243032;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.7 var(--sans)}
+.shell{display:grid;grid-template-columns:minmax(0,1fr);max-width:1240px;margin:0 auto;padding-inline:16px}
+@media (min-width:1080px){.shell{grid-template-columns:290px minmax(0,1fr);gap:48px;padding-inline:32px}}
+main{min-width:0;max-width:46rem;padding-block:40px 120px}
+header.hero{padding-block:8px 28px;border-bottom:1px solid var(--rule);margin-bottom:8px}
+.eyebrow{font:600 12px/1.4 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1{font:600 clamp(2rem,1.3rem + 3vw,2.9rem)/1.12 var(--serif);letter-spacing:-.01em;margin:0 0 12px;text-wrap:balance}
+.meta{color:var(--muted);font-size:14px;margin:0}
+h2{font:600 1.85rem/1.2 var(--serif);margin:3.2rem 0 1rem;padding-top:1.4rem;border-top:2px solid var(--ink);text-wrap:balance;scroll-margin-top:16px}
+h3{font:600 1.3rem/1.3 var(--serif);margin:2.4rem 0 .7rem;text-wrap:balance;scroll-margin-top:16px}
+h4{font:600 1.05rem/1.4 var(--sans);margin:1.8rem 0 .5rem;scroll-margin-top:16px}
+h3 em,h2 em{font-weight:400;color:var(--muted)}
+p,ul,ol{margin:0 0 1rem}
+ul,ol{padding-left:1.4rem}
+li{margin:.2rem 0}
+strong{font-weight:600}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+hr{border:0;border-top:1px solid var(--rule);margin:2.5rem 0}
+code{font:0.86em/1.4 var(--mono);background:var(--code-bg);padding:.1em .35em;border-radius:4px;overflow-wrap:anywhere}
+.wide{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 1.4rem;max-width:100%}
+pre{margin:0;background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:14px 16px;width:max-content;min-width:100%}
+pre code{background:none;padding:0;font-size:13.5px;line-height:1.45;overflow-wrap:normal;white-space:pre}
+table{border-collapse:collapse;font-size:15px;line-height:1.5;min-width:100%;background:var(--surface)}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--rule)}
+th{font-weight:600;font-size:13px;letter-spacing:.02em;color:var(--muted);border-bottom:2px solid var(--ink);white-space:nowrap}
+tbody tr:nth-child(even){background:var(--row)}
+td{min-width:9rem}
+td:first-child{min-width:7rem}
+blockquote{margin:0 0 1.2rem;padding:12px 16px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 6px 6px 0}
+blockquote.warn{border-left-color:var(--warn-rule);background:var(--warn-bg)}
+blockquote p:last-child{margin-bottom:0}
+.tag{display:inline-block;font:600 11.5px/1 var(--sans);letter-spacing:.04em;padding:4px 7px 3px;border-radius:4px;vertical-align:.12em;white-space:nowrap}
+.tag-nen{color:var(--t-nen);background:var(--t-nen-bg)}
+.tag-qd{color:var(--t-qd);background:var(--t-qd-bg)}
+.tag-bay{color:var(--t-bay);background:var(--t-bay-bg)}
+.tag-case{color:var(--t-case);background:var(--t-case-bg)}
+.tag-other{color:var(--t-other);background:var(--t-other-bg)}
+h2 .tag,h3 .tag{font-size:12px;vertical-align:.3em}
+.path{font:0.86em var(--mono);color:var(--muted);border-bottom:1px dotted var(--muted)}
+
+/* mục lục */
+nav.toc{font-size:14px;line-height:1.45}
+nav.toc .toc-title{font:600 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+nav.toc ol{list-style:none;margin:0;padding:0}
+nav.toc li{margin:0}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:5px}
+nav.toc a:hover{color:var(--ink);background:var(--code-bg)}
+nav.toc li.part>a{color:var(--ink);font-weight:600;margin-top:8px}
+nav.toc li.part ol a{padding-left:22px;font-size:13.5px}
+nav.toc a.active{color:var(--accent);background:var(--accent-soft)}
+@media (min-width:1080px){
+  aside.side{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow-y:auto;padding-block:44px 40px;overscroll-behavior:contain}
+  .toc-btn,.scrim,.drawer-head{display:none}
+}
+@media (max-width:1079px){
+  aside.side{position:fixed;inset:0 auto 0 0;width:min(340px,86vw);z-index:20;background:var(--surface);
+    padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(24px + env(safe-area-inset-bottom,0px));
+    overflow-y:auto;transform:translateX(-102%);transition:transform .22s ease;box-shadow:0 0 40px rgba(0,0,0,.18);overscroll-behavior:contain}
+  body.toc-open aside.side{transform:none}
+  .scrim{position:fixed;inset:0;z-index:15;background:rgba(10,16,17,.4)}
+  .drawer-head{display:flex;justify-content:flex-end;margin-bottom:4px}
+  .drawer-head button{font:500 14px var(--sans);color:var(--muted);background:none;border:0;padding:8px;cursor:pointer}
+  .toc-btn{position:fixed;right:16px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:10;
+    font:600 14px/1 var(--sans);color:var(--surface);background:var(--ink);border:0;border-radius:999px;
+    padding:13px 18px;box-shadow:0 6px 20px rgba(0,0,0,.2);cursor:pointer}
+}
+@media (prefers-reduced-motion:reduce){aside.side{transition:none}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="side" id="toc" aria-label="Mục lục"><div class="drawer-head"><button type="button">Đóng</button></div><nav class="toc"><p class="toc-title">Mục lục</p><ol><li class="intro"><a href="#nhan-nguon-oc-truoc">Nhãn nguồn — đọc trước</a></li><li class="intro"><a href="#ban-o">Bản đồ</a></li><li class="part"><a href="#1-ngan-hang-kiem-tien-bang-cach-nao-nen">1. Ngân hàng kiếm tiền bằng cách nào</a><ol><li><a href="#11-mot-cau">1.1 Một câu</a></li><li><a href="#12-ieu-lam-ngan-hang-khac-moi-nganh-khac">1.2 Điều làm ngân hàng khác mọi ngành khác</a></li><li><a href="#13-tu-nguyen-lieu-en-loi-nhuan-bay-tang">1.3 Từ nguyên liệu đến lợi nhuận — bảy tầng</a></li></ol></li><li class="part"><a href="#2-bang-can-oi-cua-mot-ngan-hang-nen">2. Bảng cân đối của một ngân hàng</a><ol><li><a href="#21-hai-ben-cua-bang">2.1 Hai bên của bảng</a></li><li><a href="#22-hai-khai-niem-la-mau-so-cua-moi-ty-le">2.2 Hai khái niệm là mẫu số của mọi tỷ lệ</a></li><li><a href="#23-ty-trong-e-co-cam-giac-ve-o-lon">2.3 Tỷ trọng để có cảm giác về độ lớn</a></li></ol></li><li class="part"><a href="#3-muoi-mot-quy-trinh-nghiep-vu-va-chi-so-cua-tung-quy-trinh">3. Mười một quy trình nghiệp vụ và chỉ số của từng quy trình</a><ol><li><a href="#31-huy-ong-von-funding-deposit-taking">3.1 Huy động vốn (Funding / Deposit taking)</a></li><li><a href="#32-cap-tin-dung-credit-origination-underwriting">3.2 Cấp tín dụng (Credit origination &amp; underwriting)</a></li><li><a href="#33-quan-ly-chat-luong-tai-san-asset-quality-collection">3.3 Quản lý chất lượng tài sản (Asset quality &amp; collection)</a></li><li><a href="#34-thanh-toan-va-giao-dich-payments-transactions">3.4 Thanh toán và giao dịch (Payments &amp; transactions)</a></li><li><a href="#35-dich-vu-va-thu-nhap-ngoai-lai-fee-non-interest-income">3.5 Dịch vụ và thu nhập ngoài lãi (Fee &amp; non-interest income)</a></li><li><a href="#36-quan-ly-tai-san-no-va-thanh-khoan-alm-treasury">3.6 Quản lý tài sản – nợ và thanh khoản (ALM / Treasury)</a></li><li><a href="#37-quan-ly-von-va-tuan-thu-capital-regulatory-compliance">3.7 Quản lý vốn và tuân thủ (Capital &amp; regulatory compliance)</a></li><li><a href="#38-khach-hang-va-trai-nghiem-customer-lifecycle-cx">3.8 Khách hàng và trải nghiệm (Customer lifecycle &amp; CX)</a></li><li><a href="#39-van-hanh-va-chi-phi-operations-cost">3.9 Vận hành và chi phí (Operations &amp; cost)</a></li><li><a href="#310-ke-hoach-va-chi-tieu-planning-targets">3.10 Kế hoạch và chỉ tiêu (Planning &amp; targets)</a></li><li><a href="#311-phong-chong-rua-tien-gian-lan-va-an-ninh-giao-dich-aml-fraud">3.11 Phòng chống rửa tiền, gian lận và an ninh giao dịch (AML / Fraud)</a></li></ol></li><li class="part"><a href="#4-cay-metric-cac-chi-so-noi-voi-nhau-ra-sao">4. Cây metric — các chỉ số nối với nhau ra sao</a><ol><li><a href="#41-loi-nhuan-cua-mot-chi-nhanh-mot-san-pham-inh-gia-ieu-chuyen-von-noi-bo-ftp-nen">4.1 Lợi nhuận của một chi nhánh, một sản phẩm — định giá điều chuyển vốn nội bộ (FTP)</a></li><li><a href="#42-thi-truong-inh-gia-mot-ngan-hang-bang-gi-nen">4.2 Thị trường định giá một ngân hàng bằng gì</a></li></ol></li><li class="part"><a href="#5-quy-inh-bat-buoc-phai-biet-q">5. Quy định bắt buộc phải biết</a><ol><li><a href="#51-nam-nhom-no-va-ty-le-du-phong">5.1 Năm nhóm nợ và tỷ lệ dự phòng</a></li><li><a href="#52-hai-loai-du-phong-va-vi-sao-tsb-quan-trong">5.2 Hai loại dự phòng — và vì sao TSBĐ quan trọng</a></li><li><a href="#53-cam-bay-quan-trong-nhat-ve-no-xau-bo-loc-chinh-sach">5.3 Cạm bẫy quan trọng nhất về nợ xấu: bộ lọc chính sách</a></li><li><a href="#54-cac-han-muc-an-toan">5.4 Các hạn mức an toàn</a></li><li><a href="#55-lai-du-thu-thu-nhap-a-ghi-nhung-chua-thu-uoc-tien">5.5 Lãi dự thu — thu nhập đã ghi nhưng chưa thu được tiền</a></li><li><a href="#56-gioi-han-cap-tin-dung-cho-mot-khach-hang-q">5.6 Giới hạn cấp tín dụng cho một khách hàng</a></li><li><a href="#57-cong-cu-cua-nhnn-cham-thang-vao-so-lieu-tung-ngan-hang-q">5.7 Công cụ của NHNN chạm thẳng vào số liệu từng ngân hàng</a></li></ol></li><li class="part"><a href="#6-chuan-oc-so-ngan-hang-nen">6. Chuẩn đọc số ngân hàng</a><ol><li><a href="#61-ky-bao-cao-quy-vs-luy-ke-vs-truot-12-thang">6.1 Kỳ báo cáo: quý vs luỹ kế vs trượt 12 tháng</a></li><li><a href="#62-quy-oi-nam-annualisation">6.2 Quy đổi năm (annualisation)</a></li><li><a href="#63-binh-quan-may-iem">6.3 Bình quân mấy điểm?</a></li><li><a href="#64-hop-nhat-vs-rieng-le">6.4 Hợp nhất vs riêng lẻ</a></li><li><a href="#65-mua-vu-cua-ngan-hang-viet-nam">6.5 Mùa vụ của ngân hàng Việt Nam</a></li></ol></li><li class="part"><a href="#7-muoi-bon-cam-bay-khi-lam-so-ngan-hang-bay">7. Mười bốn cạm bẫy khi làm số ngân hàng</a></li><li class="part"><a href="#8-boi-canh-nganh-ngan-hang-viet-nam-nen-q">8. Bối cảnh ngành ngân hàng Việt Nam</a><ol><li><a href="#81-bay-ac-thu">8.1 Bảy đặc thù</a></li><li><a href="#82-du-lieu-trong-mot-ngan-hang-nam-o-au-nen">8.2 Dữ liệu trong một ngân hàng nằm ở đâu</a></li></ol></li><li class="part"><a href="#9-tu-ien-thuat-ngu">9. Từ điển thuật ngữ</a></li><li class="part"><a href="#10-hai-ca-mau-va-oc-tiep-gi">10. Hai ca mẫu, và đọc tiếp gì</a><ol><li><a href="#101-tcb-va-vcb-dung-e-lam-gi">10.1 TCB và VCB — dùng để làm gì</a></li><li><a href="#102-oc-tiep-trong-thu-vien-nay">10.2 Đọc tiếp trong thư viện này</a></li><li><a href="#103-cau-tu-kiem">10.3 Câu tự kiểm</a></li></ol></li></ol></nav></aside>
+<main>
+<header class="hero"><p class="eyebrow">Domain primer · Ngân hàng</p><h1>Nhập môn domain ngân hàng Việt Nam</h1><p class="meta">Bản HTML của <code>banking/DOMAIN-PRIMER.md</code> · cập nhật 29/09/2026</p></header>
+
+<p>Tài liệu này dành cho <strong>người mới tiếp cận ngành</strong>, và nó trả lời bốn câu:</p>
+<ol>
+<li>Một ngân hàng <strong>kiếm tiền bằng cách nào</strong> — mô hình kinh doanh, đọc trong 10 phút.</li>
+<li>Một ngân hàng có những <strong>quy trình nghiệp vụ</strong> nào.</li>
+<li>Mỗi quy trình đo bằng <strong>chỉ số</strong> nào, và <strong>từng chỉ số nghĩa là gì</strong>.</li>
+<li>Những <strong>kiến thức nền bắt buộc</strong> khác: quy định, hạn mức, chuẩn đọc số, thuật ngữ.</li>
+</ol>
+<p>Đây là tài liệu <strong>về ngành</strong>, không phải về một ngân hàng cụ thể và không phải về một bộ dữ liệu cụ
+thể. Hai file kia (<code>01-domain-analysis</code>, <code>02-metrics</code>) tổ chức theo <em>bài tập đã làm</em>; file này tổ chức
+theo <em>ngành</em>.</p>
+<h3 id="nhan-nguon-oc-truoc">Nhãn nguồn — đọc trước</h3>
+<p>Mỗi khẳng định trong file mang một nhãn. Nhãn quan trọng vì nó cho biết <strong>có được mang sang tổ chức
+khác hay không</strong>:</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Nhãn</th>
+<th>Nghĩa</th>
+<th>Mang sang ngân hàng khác được?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="tag tag-nen">NỀN</span></td>
+<td>Kiến thức nền của ngành — khái niệm, công thức chuẩn, cơ chế kinh tế</td>
+<td>✅ có</td>
+</tr>
+<tr>
+<td><span class="tag tag-qd">QĐ</span></td>
+<td>Quy định pháp lý Việt Nam, đã xác minh từ văn bản gốc</td>
+<td>✅ có, nhưng <strong>phải kiểm ngày hiệu lực</strong></td>
+</tr>
+<tr>
+<td><span class="tag tag-case">TCB</span> <span class="tag tag-case">VCB</span></td>
+<td>Số liệu <strong>minh hoạ</strong> từ báo cáo công khai của Techcombank / Vietcombank</td>
+<td>❌ <strong>không</strong> — đây là <em>ví dụ</em>, không phải chuẩn ngành</td>
+</tr>
+<tr>
+<td><span class="tag tag-bay">BẪY</span></td>
+<td>Cạm bẫy đo lường đã gặp thật</td>
+<td>✅ có</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="warn"><p>⚠️ <strong>Về hai ca mẫu.</strong> TCB và VCB chỉ là <strong>hai điểm dữ liệu</strong>. Mọi con số của họ trong file này có mặt
+để bạn <em>thấy độ lớn thực tế trông thế nào</em>, không để làm mốc chuẩn. Hai ngân hàng không đủ để nói
+"ngành Việt Nam thường ở mức X" — và hai ngân hàng này được chọn chính vì chúng <strong>đối lập nhau</strong>
+(một tư nhân nghiêng bán lẻ, một quốc doanh nghiêng doanh nghiệp), nên khoảng giữa chúng rộng hơn
+mức bình thường.</p>
+</blockquote>
+<h3 id="ban-o">Bản đồ</h3>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Phần</th>
+<th>Nội dung</th>
+<th>Ai cần đọc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>Ngân hàng kiếm tiền bằng cách nào — mô hình kinh doanh</td>
+<td><strong>mọi người, đọc trước tiên</strong></td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>Bảng cân đối của một ngân hàng</td>
+<td>mọi người</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>Mười một quy trình nghiệp vụ + chỉ số của từng quy trình</td>
+<td><strong>phần chính</strong></td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Cây metric — các chỉ số nối với nhau ra sao · lợi nhuận nội bộ (FTP) · định giá</td>
+<td>sau khi đọc phần 3</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>Quy định <span class="tag tag-qd">QĐ</span>: phân loại nợ, trích lập, lãi dự thu, hạn mức an toàn, giới hạn tín dụng</td>
+<td>ai làm số về rủi ro hoặc tuân thủ</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td>Chuẩn đọc số: kỳ, quy đổi năm, bình quân, hợp nhất vs riêng lẻ, mùa vụ</td>
+<td><strong>ai đọc báo cáo ngân hàng</strong></td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td>Mười bốn cạm bẫy <span class="tag tag-bay">BẪY</span></td>
+<td>ai dựng mô hình hoặc dashboard</td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td>Bối cảnh ngành Việt Nam · dữ liệu trong ngân hàng nằm ở đâu</td>
+<td>để hiểu vì sao các chỉ số đó quan trọng ở VN</td>
+</tr>
+<tr>
+<td><strong>9</strong></td>
+<td>Từ điển thuật ngữ VN–EN</td>
+<td>tra khi cần</td>
+</tr>
+<tr>
+<td><strong>10</strong></td>
+<td>Hai ca mẫu + đọc tiếp gì</td>
+<td>cuối</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="1-ngan-hang-kiem-tien-bang-cach-nao-nen">1. Ngân hàng kiếm tiền bằng cách nào — <span class="tag tag-nen">NỀN</span></h2>
+<h3 id="11-mot-cau">1.1 Một câu</h3>
+<p><strong>Ngân hàng mua tiền rẻ và bán tiền đắt hơn, rồi phải trừ đi phần tiền cho vay không lấy lại được.</strong></p>
+<p>Ba mệnh đề trong câu đó là ba nửa của toàn bộ ngành:</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th></th>
+<th>Tên nghiệp vụ</th>
+<th>Chỉ số đại diện</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mua tiền rẻ</td>
+<td><strong>huy động vốn</strong></td>
+<td>chi phí vốn, CASA ratio</td>
+</tr>
+<tr>
+<td>Bán tiền đắt hơn</td>
+<td><strong>cấp tín dụng</strong></td>
+<td>lợi suất cho vay, NIM</td>
+</tr>
+<tr>
+<td>Phần không lấy lại được</td>
+<td><strong>rủi ro tín dụng</strong></td>
+<td>nợ xấu, chi phí tín dụng</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="12-ieu-lam-ngan-hang-khac-moi-nganh-khac">1.2 Điều làm ngân hàng khác mọi ngành khác</h3>
+<p>Đây là bốn đặc thù mà người từ ngành khác sang thường bỏ qua, và cả bốn đều dẫn tới một loại chỉ số
+riêng:</p>
+<p><strong>a) Hàng tồn kho của ngân hàng là <em>bảng cân đối</em>, không phải kho vật lý.</strong> Ở bán lẻ, doanh thu là
+trung tâm. Ở ngân hàng, <strong>bảng cân đối là trung tâm</strong> — vì mỗi đồng tài sản là một đồng đang sinh lãi,
+và mỗi đồng nợ là một đồng đang tốn lãi. Vì vậy mọi tỷ lệ sinh lời của ngân hàng đều có mẫu số là một
+khoản mục bảng cân đối <em>bình quân</em>, không phải doanh thu.</p>
+<p><strong>b) Rủi ro đến sau doanh thu, có khi nhiều năm sau.</strong> Một khoản vay tồi vẫn ghi nhận lãi bình thường
+cho đến lúc khách ngừng trả. Nghĩa là <strong>lợi nhuận hôm nay có thể là tổn thất chưa lộ của mai sau</strong> —
+và đó là lý do tồn tại cả một hệ thống <em>phân loại nợ</em> và <em>trích lập dự phòng</em> do nhà nước quy định
+(phần 5). Không ngành nào khác bị bắt buộc phải ghi nhận trước một khoản lỗ chưa xảy ra.</p>
+<p><strong>c) Đòn bẩy rất cao, nên sai số nhỏ ăn hết lợi nhuận.</strong> Vốn chủ sở hữu thường chỉ chiếm dưới 15% tổng
+tài sản, tức <strong>tài sản gấp từ 7 lần vốn trở lên</strong> — ngân hàng mỏng vốn còn vượt 12 lần.</p>
+<blockquote>
+<p><span class="tag tag-case">TCB</span> <span class="tag tag-case">VCB</span> <em>Minh hoạ:</em> tại 30/6/2026, tài sản ÷ vốn chủ là <strong>6,7 lần</strong> ở TCB và <strong>10,7 lần</strong> ở
+VCB. Với đòn bẩy 10 lần, mất <strong>1%</strong> giá trị tài sản là mất <strong>10%</strong> vốn chủ.</p>
+</blockquote>
+<p>Hệ quả: nhà nước phải giới hạn đòn bẩy bằng <strong>hệ số an toàn vốn (CAR)</strong>, và CAR trở thành <em>giấy phép
+tăng trưởng</em> — muốn cho vay thêm thì phải có vốn thêm.</p>
+<p><strong>d) Thanh khoản có thể chết trước khi lợi nhuận chết.</strong> Tiền gửi có thể rút bất cứ lúc nào, còn khoản
+vay thì không thu về được ngay. Ngân hàng luôn sống trong tình trạng <strong>kỳ hạn nguồn ngắn hơn kỳ hạn
+tài sản</strong> — đó là nghiệp vụ, không phải sai sót. Nhưng nó phải được đo và bị chặn bằng các hạn mức
+thanh khoản.</p>
+<h3 id="13-tu-nguyen-lieu-en-loi-nhuan-bay-tang">1.3 Từ nguyên liệu đến lợi nhuận — bảy tầng</h3>
+<p>Đây là chuỗi cần nhớ. Mọi chỉ số sinh lời của ngân hàng đều là một tầng trong đây:</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th style="text-align: center;">Tầng</th>
+<th>Tên</th>
+<th>Công thức</th>
+<th>Chỉ số chuẩn hoá</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td>Thu nhập lãi</td>
+<td>dư nợ &amp; tài sản sinh lời × lãi suất cho vay</td>
+<td><strong>lợi suất tài sản</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td>− Chi phí lãi</td>
+<td>nguồn vốn × lãi suất huy động</td>
+<td><strong>chi phí vốn</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td>= <strong>Thu nhập lãi thuần (NII)</strong></td>
+<td>(1) − (2)</td>
+<td><strong>NIM</strong> = NII ÷ tài sản sinh lời bq</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td>+ Thu nhập ngoài lãi</td>
+<td>phí · ngoại hối · đầu tư · thu khác</td>
+<td><strong>tỷ trọng ngoài lãi / TOI</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td>= <strong>Tổng thu nhập hoạt động (TOI)</strong></td>
+<td>(3) + (4)</td>
+<td>—</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td>− Chi phí hoạt động (OPEX)</td>
+<td>nhân sự · công vụ · tài sản</td>
+<td><strong>CIR</strong> = OPEX ÷ TOI</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td>− Chi phí dự phòng rủi ro tín dụng</td>
+<td>trích lập trong kỳ</td>
+<td><strong>chi phí tín dụng</strong> = dự phòng ÷ dư nợ bq</td>
+</tr>
+<tr>
+<td style="text-align: center;">=</td>
+<td><strong>Lợi nhuận trước thuế (LNTT)</strong></td>
+<td></td>
+<td>con số ngân hàng VN hay dùng làm <strong>chỉ tiêu kế hoạch</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">−</td>
+<td>Thuế thu nhập doanh nghiệp</td>
+<td>thuế suất phổ thông 20%</td>
+<td>—</td>
+</tr>
+<tr>
+<td style="text-align: center;">=</td>
+<td><strong>Lợi nhuận sau thuế (LNST)</strong></td>
+<td></td>
+<td>→ <strong>ROA</strong>, <strong>ROE</strong> tính trên <strong>LNST</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><span class="tag tag-bay">BẪY</span> Ngân hàng Việt Nam công bố kế hoạch và tăng trưởng theo <strong>LNTT</strong>, nhưng ROA/ROE theo <strong>LNST</strong>.
+Lấy LNTT chia vốn chủ sẽ ra một "ROE" cao hơn thật khoảng một phần tư.</p>
+</blockquote>
+<p>Và hai ràng buộc bao ngoài toàn bộ chuỗi trên:</p>
+<ul>
+<li><strong>Vốn (CAR)</strong> — chặn tổng tài sản có thể có.</li>
+<li><strong>Thanh khoản (LDR, hạn mức kỳ hạn)</strong> — chặn cách tài sản được tài trợ.</li>
+</ul>
+<blockquote>
+<p><strong>📌 Điều quan trọng nhất của phần 1.</strong> Ba tầng đầu (1–3) là <em>nghề chính</em>; tầng 4 là <em>đa dạng hoá</em>;
+tầng 6 là <em>vận hành</em>; tầng 7 là <em>rủi ro</em>. Một ngân hàng có thể thắng ở bất kỳ tầng nào — và hai ngân
+hàng có ROE bằng nhau có thể đến đó bằng những tầng hoàn toàn khác nhau. Đó là lý do <strong>không bao giờ
+xếp hạng ngân hàng bằng một chỉ số duy nhất</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="2-bang-can-oi-cua-mot-ngan-hang-nen">2. Bảng cân đối của một ngân hàng — <span class="tag tag-nen">NỀN</span></h2>
+<p>Đọc được bảng này là điều kiện để hiểu mọi chỉ số phía sau, vì <strong>mẫu số của gần như mọi tỷ lệ đều nằm
+ở đây</strong>.</p>
+<h3 id="21-hai-ben-cua-bang">2.1 Hai bên của bảng</h3>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>TÀI SẢN = tiền đang được dùng vào việc gì</th>
+<th>NỢ + VỐN = tiền đến từ đâu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tiền mặt</td>
+<td>Nợ Chính phủ và NHNN</td>
+</tr>
+<tr>
+<td>Tiền gửi tại NHNN <em>(dự trữ bắt buộc)</em></td>
+<td>Tiền gửi và vay các TCTD khác <em>(liên hàng)</em></td>
+</tr>
+<tr>
+<td>Tiền gửi và cho vay các TCTD khác</td>
+<td><strong>Tiền gửi của khách hàng</strong> ← nguồn chính</td>
+</tr>
+<tr>
+<td>Chứng khoán đầu tư <em>(trái phiếu CP, TP doanh nghiệp…)</em></td>
+<td>Phát hành giấy tờ có giá <em>(chứng chỉ tiền gửi, trái phiếu)</em></td>
+</tr>
+<tr>
+<td><strong>Cho vay khách hàng</strong> ← tài sản chính</td>
+<td>Nợ khác</td>
+</tr>
+<tr>
+<td><em>(−) Dự phòng rủi ro cho vay</em></td>
+<td><strong>Vốn chủ sở hữu</strong>: vốn điều lệ · các quỹ · lợi nhuận chưa phân phối</td>
+</tr>
+<tr>
+<td>Tài sản cố định, tài sản khác</td>
+<td>Lợi ích cổ đông không kiểm soát</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Phép kiểm bắt buộc trước khi dùng bất kỳ bảng cân đối nào:</strong></p>
+<div class="wide"><pre><code>Tổng tài sản  =  Tổng nợ phải trả  +  Tổng vốn chủ sở hữu  +  Lợi ích cổ đông không kiểm soát
+</code></pre></div>
+<p>Một phép cộng mười giây. Nó đã bắt được một file export lỗi lệch <strong>221.264 tỷ</strong> trong thư viện này —
+file mà mắt thường đọc qua thấy hoàn toàn bình thường.</p>
+<h3 id="22-hai-khai-niem-la-mau-so-cua-moi-ty-le">2.2 Hai khái niệm là mẫu số của mọi tỷ lệ</h3>
+<p>Người mới hay dùng "tổng tài sản" cho mọi thứ. Sai. Có <strong>ba</strong> mẫu số khác nhau và chúng không thay thế
+nhau được:</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Mẫu số</th>
+<th>Gồm những gì</th>
+<th>Dùng cho chỉ số nào</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tổng tài sản</strong></td>
+<td>tất cả</td>
+<td>ROA</td>
+</tr>
+<tr>
+<td><strong>Tài sản sinh lời</strong> <em>(earning assets)</em></td>
+<td>tiền gửi tại NHNN + tiền gửi &amp; cho vay TCTD + chứng khoán + cho vay khách hàng — <strong>loại trừ</strong> tiền mặt, TSCĐ, tài sản khác</td>
+<td><strong>NIM</strong>, lợi suất tài sản</td>
+</tr>
+<tr>
+<td><strong>Nợ chịu lãi</strong> <em>(interest-bearing liabilities)</em></td>
+<td>nợ CP &amp; NHNN + tiền gửi &amp; vay TCTD + tiền gửi khách hàng + giấy tờ có giá — <strong>loại trừ</strong> nợ khác, vốn chủ</td>
+<td><strong>chi phí vốn</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><span class="tag tag-bay">BẪY</span> <strong>Không trừ được lợi suất tài sản cho chi phí vốn để ra NIM.</strong> Hai tỷ lệ đó có <strong>hai mẫu số
+khác nhau</strong> (tài sản sinh lời vs nợ chịu lãi), nên hiệu của chúng luôn <em>thấp hơn</em> NIM thật. Ở cả hai
+ca mẫu, sai số là 32–46 bps — đủ lớn để đổi kết luận, đủ nhỏ để trông hợp lý. Muốn ra NIM thì phải
+đưa chi phí lãi về <strong>cùng</strong> mẫu số với lợi suất.</p>
+</blockquote>
+<h3 id="23-ty-trong-e-co-cam-giac-ve-o-lon">2.3 Tỷ trọng để có cảm giác về độ lớn</h3>
+<blockquote>
+<p><span class="tag tag-case">TCB</span> <span class="tag tag-case">VCB</span> <em>Minh hoạ, 30/6/2026 — đây là hai điểm dữ liệu, không phải chuẩn ngành:</em></p>
+</blockquote>
+<div class="wide"><table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: right;">TCB</th>
+<th style="text-align: right;">VCB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cho vay khách hàng / tổng tài sản</td>
+<td style="text-align: right;">~72%</td>
+<td style="text-align: right;">66%</td>
+</tr>
+<tr>
+<td>Tiền gửi khách hàng / tổng tài sản</td>
+<td style="text-align: right;"><strong>55%</strong></td>
+<td style="text-align: right;"><strong>65%</strong></td>
+</tr>
+<tr>
+<td>Vốn chủ / tổng tài sản</td>
+<td style="text-align: right;">~15%</td>
+<td style="text-align: right;">9%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Chênh lệch ở dòng giữa là điều đáng học: TCB tài trợ tài sản bằng tiền gửi khách hàng <strong>ít hơn 10 điểm
+phần trăm</strong>, phần còn lại đến từ liên hàng, giấy tờ có giá, vốn vay nước ngoài. Nguồn thị trường thì
+<strong>đắt hơn và rút nhanh hơn</strong> tiền gửi dân cư. Một dòng trong bảng cân đối, và nó giải thích được cả
+chi phí vốn và rủi ro thanh khoản.</p>
+<hr />
+<h2 id="3-muoi-mot-quy-trinh-nghiep-vu-va-chi-so-cua-tung-quy-trinh">3. Mười một quy trình nghiệp vụ và chỉ số của từng quy trình</h2>
+<p>Đây là phần chính. Với mỗi quy trình: <strong>grain</strong> (một dòng dữ liệu = cái gì), <strong>chỉ số</strong>, <strong>ý nghĩa
+từng chỉ số</strong>, và <strong>bẫy</strong>.</p>
+<p><strong>Trước khi vào quy trình — ngân hàng bán cái gì.</strong> Người mới hay lạc vì không biết một cái tên sản phẩm
+thuộc bên nào của bảng cân đối. Bảng dưới đủ để xếp gần như mọi sản phẩm vào đúng quy trình:</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Nhóm sản phẩm</th>
+<th>Ví dụ</th>
+<th>Nằm ở đâu</th>
+<th>Quy trình</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tiền gửi</strong></td>
+<td>tài khoản thanh toán · tiết kiệm có kỳ hạn · tiền gửi ký quỹ · chứng chỉ tiền gửi</td>
+<td><strong>nợ phải trả</strong></td>
+<td>3.1</td>
+</tr>
+<tr>
+<td><strong>Cho vay KHCN</strong></td>
+<td>mua nhà · mua ô tô · sản xuất kinh doanh hộ · tiêu dùng tín chấp · <strong>thẻ tín dụng</strong></td>
+<td>tài sản</td>
+<td>3.2</td>
+</tr>
+<tr>
+<td><strong>Cho vay KHDN</strong></td>
+<td>vốn lưu động (hạn mức) · trung–dài hạn theo dự án · chiết khấu · bao thanh toán</td>
+<td>tài sản</td>
+<td>3.2</td>
+</tr>
+<tr>
+<td><strong>Cam kết ngoại bảng</strong></td>
+<td><strong>bảo lãnh</strong> · thư tín dụng (<strong>L/C</strong>) · cam kết cho vay không huỷ ngang</td>
+<td><strong>ngoài bảng</strong> — nhưng vẫn là rủi ro tín dụng (5.2)</td>
+<td>3.2 · 3.5</td>
+</tr>
+<tr>
+<td><strong>Dịch vụ</strong></td>
+<td>chuyển tiền · thanh toán quốc tế · mua bán ngoại tệ · bancassurance · quản lý tài sản</td>
+<td>chỉ đi vào <strong>P&amp;L</strong>, không vào bảng cân đối</td>
+<td>3.4 · 3.5</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>📌 <strong>Thẻ tín dụng là khoản vay, thẻ ghi nợ là tài khoản tiền gửi.</strong> Hai tấm thẻ trông giống nhau nhưng
+nằm ở hai bên bảng cân đối — trộn chúng trong một chỉ số "thẻ" là trộn tài sản với nguồn vốn.</p>
+</blockquote>
+<p>Về grain — ba loại, và chúng <strong>không cộng được với nhau</strong>:</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Loại grain</th>
+<th>Ví dụ</th>
+<th>Tính chất cộng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sự kiện</strong> <em>(event / flow)</em></td>
+<td>một giao dịch, một lần giải ngân</td>
+<td><strong>additive</strong> — cộng qua mọi chiều được</td>
+</tr>
+<tr>
+<td><strong>Snapshot định kỳ</strong> <em>(stock)</em></td>
+<td>số dư tài khoản cuối tháng, phân loại nợ cuối tháng</td>
+<td><strong>semi-additive</strong> — cộng qua khách/chi nhánh được, <strong>KHÔNG cộng qua thời gian</strong></td>
+</tr>
+<tr>
+<td><strong>Kỳ kế hoạch</strong></td>
+<td>target chi nhánh × tháng</td>
+<td>không phải số thực hiện, chỉ để so</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><span class="tag tag-bay">BẪY</span> Gần như <strong>mọi lỗi đo lường trong banking đều xuất phát từ chỗ trộn ba loại này</strong> — điển hình
+nhất là cộng số dư qua 12 tháng (ra con số phồng gấp 12 lần) hoặc lẫn <em>giải ngân trong kỳ</em> (flow) với
+<em>dư nợ cuối kỳ</em> (stock).</p>
+</blockquote>
+<hr />
+<h3 id="31-huy-ong-von-funding-deposit-taking">3.1 Huy động vốn <em>(Funding / Deposit taking)</em></h3>
+<p><strong>Làm gì:</strong> nhận tiền gửi từ dân cư và tổ chức, phát hành giấy tờ có giá, vay trên thị trường liên
+hàng. Đây là <strong>đầu vào</strong> của cả ngân hàng.</p>
+<p><strong>Grain:</strong> tài khoản × cuối tháng (snapshot) cho số dư · một hợp đồng phát hành cho giấy tờ có giá.</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Chỉ số</th>
+<th>Công thức</th>
+<th>Ý nghĩa — đọc thế nào</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tổng tiền gửi khách hàng</strong></td>
+<td>Σ số dư tại cuối kỳ</td>
+<td>Quy mô nguồn vốn <strong>bền nhất và rẻ nhất</strong>. Semi-additive</td>
+</tr>
+<tr>
+<td>Tăng trưởng huy động (ytd, n/n)</td>
+<td>kỳ này ÷ kỳ gốc − 1</td>
+<td>Phải so với <strong>tăng trưởng huy động toàn hệ thống</strong>, không đọc một mình</td>
+</tr>
+<tr>
+<td><strong>CASA ratio</strong></td>
+<td>tiền gửi <strong>không kỳ hạn</strong> ÷ tổng tiền gửi</td>
+<td>Tỷ trọng nguồn vốn gần như không phải trả lãi. Nhưng ý nghĩa sâu hơn: CASA sinh ra từ <strong>quan hệ giao dịch</strong> (trả lương, thanh toán, thẻ) chứ không mua được bằng lãi suất → nó là thước đo <strong>độ gắn kết khách hàng</strong>, không chỉ là giá vốn</td>
+</tr>
+<tr>
+<td><strong>Chi phí vốn</strong> <em>(cost of funds)</em></td>
+<td>chi phí lãi ÷ <strong>nợ chịu lãi bình quân</strong></td>
+<td><strong>Giá mua nguyên liệu.</strong> Đây là một trong hai chân của NIM</td>
+</tr>
+<tr>
+<td>Cơ cấu nguồn vốn</td>
+<td>tiền gửi KH / liên hàng / GTCG / vay nước ngoài</td>
+<td>Nguồn thị trường <strong>đắt hơn và rút nhanh hơn</strong> → vừa đẩy chi phí vốn vừa tăng rủi ro thanh khoản</td>
+</tr>
+<tr>
+<td>Cơ cấu kỳ hạn huy động</td>
+<td>ngắn / có kỳ hạn theo dải</td>
+<td>Đầu vào của quản lý khe hở kỳ hạn (mục 3.6)</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><span class="tag tag-bay">BẪY</span> <strong>CASA giải thích <em>biến động theo thời gian</em> của chi phí vốn trong một ngân hàng — nhưng
+không giải thích <em>mức</em> chi phí vốn giữa các ngân hàng.</strong> Mức chi phí vốn do <strong>uy tín tín dụng</strong> và
+<strong>cơ cấu tài trợ</strong> quyết định: người gửi tiền vào một ngân hàng được coi là an toàn hơn sẽ nhận lãi
+thấp hơn mà vẫn gửi.</p>
+<p><span class="tag tag-case">TCB</span> <span class="tag tag-case">VCB</span> <em>Minh hoạ ngược chiều:</em> ngân hàng có CASA <strong>thấp hơn</strong> (32,3% vs 38,3%) lại có chi
+phí vốn <strong>rẻ hơn 192 bps</strong> (2,99% vs 4,91%). Dùng CASA để xếp hạng giá vốn giữa các bank là dùng sai
+chiều.</p>
+</blockquote>
+<hr />
+<h3 id="32-cap-tin-dung-credit-origination-underwriting">3.2 Cấp tín dụng <em>(Credit origination &amp; underwriting)</em></h3>
+<p><strong>Làm gì:</strong> tiếp nhận nhu cầu vay, thẩm định, phê duyệt hạn mức, nhận tài sản bảo đảm, giải ngân. Đây
+là <strong>đầu ra</strong> và cũng là nơi rủi ro được tạo ra.</p>
+<p><strong>Grain:</strong> một khoản vay được phê duyệt / giải ngân (<strong>sự kiện</strong>) · dư nợ theo khoản × cuối tháng
+(<strong>snapshot</strong>).</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Chỉ số</th>
+<th>Công thức</th>
+<th>Ý nghĩa — đọc thế nào</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dư nợ cho vay khách hàng</strong></td>
+<td>Σ dư nợ cuối kỳ</td>
+<td><strong>Stock</strong>, semi-additive. Đây là tài sản sinh lời lớn nhất</td>
+</tr>
+<tr>
+<td><strong>Giải ngân trong kỳ</strong></td>
+<td>Σ số tiền giải ngân</td>
+<td><strong>Flow</strong>, additive. Đo <em>hoạt động bán</em>, không đo <em>quy mô danh mục</em></td>
+</tr>
+<tr>
+<td><strong>Tăng trưởng tín dụng (ytd)</strong></td>
+<td>dư nợ cuối kỳ ÷ đầu năm − 1</td>
+<td>Ở Việt Nam chỉ số này <strong>bị chặn bởi hạn mức NHNN cấp</strong> (xem phần 8) → nó vừa là kết quả kinh doanh vừa là kết quả xin hạn mức</td>
+</tr>
+<tr>
+<td><strong>Lợi suất cho vay bình quân</strong></td>
+<td>thu lãi cho vay ÷ dư nợ bình quân</td>
+<td><strong>Giá bán.</strong> Chân còn lại của NIM</td>
+</tr>
+<tr>
+<td>Lãi suất bình quân <strong>có trọng số</strong></td>
+<td>Σ(lãi suất × số tiền) ÷ Σ(số tiền)</td>
+<td>Bình quân <em>giản đơn</em> của lãi suất là <strong>sai</strong> — khoản 1 tỷ và khoản 100 tỷ không cùng trọng số</td>
+</tr>
+<tr>
+<td>Cơ cấu danh mục theo <strong>nhóm khách</strong></td>
+<td>KHDN / SME / KHCN</td>
+<td>Quyết định lợi suất: cho vay cá nhân tín chấp đắt hơn cho vay tập đoàn nhiều lần</td>
+</tr>
+<tr>
+<td>Cơ cấu theo <strong>ngành kinh tế</strong></td>
+<td>BĐS, xây dựng, thương mại…</td>
+<td>Đo <strong>tập trung rủi ro</strong> — một ngành sập thì cả cụm dư nợ sập cùng lúc</td>
+</tr>
+<tr>
+<td>Cơ cấu theo <strong>kỳ hạn</strong></td>
+<td>ngắn / trung / dài hạn</td>
+<td>Trung–dài hạn lãi cao hơn nhưng <strong>ăn vào hạn mức</strong> "vốn ngắn hạn cho vay trung–dài hạn" (phần 5)</td>
+</tr>
+<tr>
+<td>Cơ cấu theo <strong>tài sản bảo đảm</strong></td>
+<td>có TSBĐ / tín chấp; loại TSBĐ</td>
+<td>Quyết định <strong>số dự phòng phải trích</strong> khi khoản vay xấu đi (mục 5.2)</td>
+</tr>
+<tr>
+<td>Tỷ lệ và thời gian phê duyệt</td>
+<td>số duyệt ÷ số nộp; ngày xử lý</td>
+<td>Chỉ số vận hành, không phải tài chính</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><span class="tag tag-bay">BẪY</span> <strong>Lẫn giải ngân (flow) với dư nợ (stock)</strong> là lỗi kinh điển. Một ngân hàng có thể giải ngân
+rất nhiều mà dư nợ đứng yên — vì khách trả nợ cũ cùng tốc độ. Hai chỉ số trả lời hai câu khác nhau.</p>
+<p><span class="tag tag-bay">BẪY</span> <strong>"Tín dụng" không phải "cho vay".</strong> Ở Việt Nam, <em>tăng trưởng tín dụng</em> — cả chỉ tiêu NHNN giao
+lẫn con số ngân hàng tự công bố — thường gồm <strong>cho vay khách hàng + trái phiếu doanh nghiệp ngân hàng
+nắm giữ</strong>, vì TPDN cũng là một cách cấp vốn cho doanh nghiệp và cũng mang rủi ro tín dụng.</p>
+<p><span class="tag tag-case">TCB</span> <em>Minh hoạ:</em> bản công bố KQKD Q2/2026 ghi rõ dòng <strong>"Tín dụng (cho vay KH &amp; trái phiếu doanh
+nghiệp)"</strong>, tách khỏi dòng "Cho vay khách hàng". Đặt tăng trưởng "tín dụng" của ngân hàng này cạnh
+tăng trưởng "cho vay" của ngân hàng kia là so hai thứ khác nhau.</p>
+</blockquote>
+<hr />
+<h3 id="33-quan-ly-chat-luong-tai-san-asset-quality-collection">3.3 Quản lý chất lượng tài sản <em>(Asset quality &amp; collection)</em></h3>
+<p><strong>Làm gì:</strong> theo dõi khách trả nợ, phân loại nợ theo quy định, trích lập dự phòng, cơ cấu lại nợ, thu
+hồi, xử lý nợ xấu. Đây là quy trình <strong>quyết định lợi nhuận thật</strong> của một ngân hàng.</p>
+<p><strong>Grain:</strong> khoản vay × cuối tháng (snapshot phân loại) · một lần xoá sổ / thu hồi (sự kiện).</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Chỉ số</th>
+<th>Công thức</th>
+<th>Ý nghĩa — đọc thế nào</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tỷ lệ nợ xấu (NPL)</strong></td>
+<td>dư nợ <strong>nhóm 3+4+5</strong> ÷ tổng dư nợ được phân loại</td>
+<td><strong>Bao nhiêu phần danh mục đang có vấn đề.</strong> Tính theo <strong>số dư</strong> (balance-weighted), không theo số lượng khoản</td>
+</tr>
+<tr>
+<td>Tỷ lệ nợ <strong>nhóm 2</strong></td>
+<td>dư nợ nhóm 2 ÷ tổng</td>
+<td><strong>Chỉ báo sớm</strong> — nợ nhóm 2 hôm nay là nợ xấu tiềm năng của 1–2 quý tới</td>
+</tr>
+<tr>
+<td><strong>Tỷ lệ bao phủ nợ xấu</strong> <em>(LLR coverage)</em></td>
+<td>tổng dự phòng ÷ nợ xấu</td>
+<td><strong>Đệm đã lập.</strong> Dưới 100% nghĩa là nếu xử lý toàn bộ nợ xấu thì phải ăn thêm vào vốn</td>
+</tr>
+<tr>
+<td><strong>Chi phí tín dụng</strong> <em>(credit cost)</em></td>
+<td><strong>chi phí dự phòng trong kỳ</strong> ÷ dư nợ bình quân</td>
+<td><strong>Giá của rủi ro đã ghi nhận vào P&amp;L kỳ này.</strong> Đây là con số ảnh hưởng lợi nhuận, không phải NPL</td>
+</tr>
+<tr>
+<td><strong>Roll-rate / NPL migration</strong></td>
+<td>dịch chuyển giữa các nhóm, tháng qua tháng</td>
+<td>Cho biết nợ đang <strong>xấu đi hay tốt lên</strong>, thứ mà một con số NPL tĩnh không nói. Cần <strong>2 snapshot liền kề</strong></td>
+</tr>
+<tr>
+<td>Nợ xoá sổ <em>(write-off)</em></td>
+<td>dùng dự phòng xử lý trong kỳ</td>
+<td>Xoá sổ <strong>làm NPL giảm mà rủi ro không giảm</strong> — luôn đọc kèm NPL</td>
+</tr>
+<tr>
+<td>Thu hồi nợ đã xử lý <em>(recovery)</em></td>
+<td>thu được từ nợ đã xoá</td>
+<td>Thu nhập ngoài lãi, và có thể làm một quý đẹp lên bất thường</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>📌 Ba tầng khác nhau, người mới hay gộp lại thành một.</strong> Đây là điều đáng nhớ nhất của mục này:</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Tầng</th>
+<th>Chỉ số</th>
+<th>Trả lời câu gì</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Phân loại</strong></td>
+<td>NPL</td>
+<td>Nợ có vấn đề <strong>bao nhiêu</strong></td>
+</tr>
+<tr>
+<td><strong>Chi phí đã ghi nhận</strong></td>
+<td>chi phí tín dụng</td>
+<td>Việc đó <strong>tốn bao nhiêu</strong> trong kỳ này</td>
+</tr>
+<tr>
+<td><strong>Đệm đã lập</strong></td>
+<td>coverage</td>
+<td><strong>Đã chuẩn bị</strong> được bao nhiêu cho tương lai</td>
+</tr>
+</tbody>
+</table></div>
+<p>Một ngân hàng có thể có NPL cao mà chi phí tín dụng thấp (vì đã trích đủ từ trước), hoặc NPL thấp mà
+chi phí tín dụng cao (vì mới trích mạnh). <strong>Ba con số này không suy ra được từ nhau.</strong></p>
+<p><span class="tag tag-bay">BẪY</span> <strong>"Chi phí tín dụng" có ít nhất ba biến thể, cùng một tên.</strong> Tử số có thể là dự phòng <em>gộp</em>
+hoặc <em>ròng sau thu hồi nợ đã xoá</em>; mẫu số có thể là dư nợ cho vay hoặc <strong>cho vay + TPDN</strong>; kỳ có thể là
+quý quy đổi năm hoặc trượt 12 tháng.</p>
+<p><span class="tag tag-case">TCB</span> <em>Minh hoạ:</em> phần định nghĩa trong bản công bố KQKD ghi chi phí tín dụng là <strong>(dự phòng cho vay
+và TPDN − thu hồi nợ) 4 quý gần nhất ÷ bình quân cho vay và TPDN</strong>. Công thức ở bảng trên (dự phòng gộp
+÷ dư nợ) sẽ <strong>không</strong> tái tạo được con số đó — không phải vì sai, mà vì khác định nghĩa.</p>
+<p><span class="tag tag-bay">BẪY</span> <strong>NPL công bố không luôn tái tạo được từ thuyết minh báo cáo tài chính.</strong> Ở một trong hai ca
+mẫu, cộng thẳng nhóm 3+4+5 ra <strong>0,61%</strong> trong khi ngân hàng công bố <strong>0,98%</strong>; ở ca mẫu kia thì khớp
+đến số thập phân thứ hai. Cùng khung quy định, hai kết quả kiểm chứng trái ngược → <strong>không xếp hạng
+chất lượng tài sản giữa các ngân hàng bằng NPL công bố</strong> mà chưa mở thuyết minh.</p>
+</blockquote>
+<h4 id="o-rui-ro-theo-cach-quan-tri-noi-bo-nen">Đo rủi ro theo cách quản trị nội bộ — <span class="tag tag-nen">NỀN</span></h4>
+<p>Năm nhóm nợ là ngôn ngữ <strong>báo cáo cho NHNN</strong>. Bên trong, khối quản trị rủi ro dùng một bộ khái niệm mịn
+hơn, và dữ liệu phân tích thường mang những cột này:</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Khái niệm</th>
+<th>Là gì</th>
+<th>Vì sao cần</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DPD</strong> <em>(days past due)</em></td>
+<td>số ngày quá hạn của khoản vay, tính từng ngày</td>
+<td>Nhóm nợ là DPD đã <strong>cắt thành 5 khúc</strong> (10 · 90 · 180 · 360 ngày). Giữ DPD thô thì dựng lại được nhóm nợ, ngược lại thì không</td>
+</tr>
+<tr>
+<td><strong>Bucket</strong></td>
+<td>DPD chia khúc theo quy ước nội bộ: 0 · 1–30 · 31–60 · 61–90 · 90+</td>
+<td>Nền của roll-rate và của việc <strong>ưu tiên đòi nợ</strong> (collection)</td>
+</tr>
+<tr>
+<td><strong>Vintage</strong></td>
+<td>theo dõi các khoản giải ngân <strong>cùng tháng</strong> qua thời gian</td>
+<td>Tách "danh mục mới đang xấu hơn" khỏi "danh mục cũ đang chín" — thứ mà NPL toàn danh mục che mất, vì dư nợ mới tăng nhanh làm <strong>loãng</strong> mẫu số</td>
+</tr>
+<tr>
+<td><strong>PD · LGD · EAD</strong></td>
+<td>xác suất vỡ nợ · tỷ lệ tổn thất khi vỡ nợ · dư nợ tại lúc vỡ nợ</td>
+<td><strong>Tổn thất kỳ vọng EL = PD × LGD × EAD</strong> — ngôn ngữ của Basel và IFRS 9</td>
+</tr>
+<tr>
+<td><strong>ECL</strong> <em>(expected credit loss)</em></td>
+<td>dự phòng theo IFRS 9, chia 3 giai đoạn theo mức suy giảm tín dụng</td>
+<td>Báo cáo theo chuẩn Việt Nam (VAS) trích lập theo <strong>quy tắc</strong> (5 nhóm × tỷ lệ cố định); IFRS 9 trích theo <strong>kỳ vọng</strong>. Cùng một danh mục, hai con số dự phòng khác nhau</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><span class="tag tag-bay">BẪY</span> <strong>NPL thấp có thể chỉ là danh mục đang tăng nhanh.</strong> Khoản vay mới hầu như chưa kịp quá hạn,
+nên dư nợ tăng mạnh làm mẫu số phình trước khi nợ xấu kịp lộ. Đọc NPL của một ngân hàng tăng trưởng
+nóng thì phải đọc kèm <strong>vintage</strong> hoặc ít nhất là NPL trễ một năm (nợ xấu hôm nay ÷ dư nợ 12 tháng
+trước).</p>
+</blockquote>
+<hr />
+<h3 id="34-thanh-toan-va-giao-dich-payments-transactions">3.4 Thanh toán và giao dịch <em>(Payments &amp; transactions)</em></h3>
+<p><strong>Làm gì:</strong> chuyển tiền, nạp/rút, thanh toán, thẻ, ngân hàng số. Về doanh thu trực tiếp thì đây là
+nghiệp vụ nhỏ; về chiến lược thì không.</p>
+<p><strong>Grain:</strong> một giao dịch (<strong>sự kiện</strong>, additive).</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Chỉ số</th>
+<th>Công thức</th>
+<th>Ý nghĩa — đọc thế nào</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Số lượng &amp; giá trị giao dịch</td>
+<td>đếm dòng · Σ số tiền</td>
+<td>Đo mức độ <strong>hoạt động</strong> của nền khách hàng</td>
+</tr>
+<tr>
+<td><strong>Tỷ trọng kênh số</strong> <em>(digital adoption)</em></td>
+<td>giao dịch qua Mobile + Internet ÷ tổng</td>
+<td>Xu hướng dịch chuyển quầy → số; ảnh hưởng trực tiếp tới OPEX và mạng lưới</td>
+</tr>
+<tr>
+<td>Số khách hàng <strong>active</strong></td>
+<td>có ≥1 giao dịch trong kỳ</td>
+<td>Khác hoàn toàn với "số khách hàng đã mở tài khoản"</td>
+</tr>
+<tr>
+<td>Số giao dịch / khách / tháng</td>
+<td></td>
+<td>Cường độ quan hệ</td>
+</tr>
+<tr>
+<td>Thu phí thanh toán</td>
+<td>Σ phí</td>
+<td>Một cấu phần của thu ngoài lãi (mục 3.5)</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>📌 Vì sao quy trình này quan trọng hơn doanh thu của nó.</strong> Giao dịch là nơi <strong>CASA sinh ra</strong>: khách
+nhận lương, thanh toán, giữ tiền chờ dùng — số dư đó là tiền gửi không kỳ hạn. Nghĩa là payments là
+<strong>phễu của huy động vốn</strong>, không phải một dòng doanh thu độc lập. Một ngân hàng đầu tư vào app không
+phải để thu phí chuyển tiền, mà để hạ chi phí vốn.</p>
+<p><span class="tag tag-bay">BẪY</span> Trong nhiều hệ thống lõi, cột số tiền giao dịch <strong>có dấu</strong> (ghi nợ âm, ghi có dương). Cộng
+thẳng thì hai chiều triệt tiêu nhau và ra gần 0. Phải xử lý dấu trước khi tổng hợp.</p>
+</blockquote>
+<hr />
+<h3 id="35-dich-vu-va-thu-nhap-ngoai-lai-fee-non-interest-income">3.5 Dịch vụ và thu nhập ngoài lãi <em>(Fee &amp; non-interest income)</em></h3>
+<p><strong>Làm gì:</strong> bán các dịch vụ không phải cho vay — bảo hiểm qua ngân hàng (bancassurance), tài trợ
+thương mại, thanh toán quốc tế, thẻ, ngoại hối, môi giới chứng khoán, quản lý quỹ.</p>
+<p><strong>Grain:</strong> một giao dịch phí / một hợp đồng.</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Chỉ số</th>
+<th>Công thức</th>
+<th>Ý nghĩa — đọc thế nào</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Thu nhập ngoài lãi</strong></td>
+<td>lãi thuần dịch vụ + ngoại hối + chứng khoán &amp; đầu tư + thu khác</td>
+<td>Nguồn thu <strong>không phụ thuộc biên lãi</strong></td>
+</tr>
+<tr>
+<td><strong>Tỷ trọng thu ngoài lãi / TOI</strong></td>
+<td>ngoài lãi ÷ TOI</td>
+<td><strong>Mức độ đa dạng hoá.</strong> Càng cao thì lợi nhuận càng ít nhạy với biến động lãi suất</td>
+</tr>
+<tr>
+<td>Lãi thuần từ dịch vụ</td>
+<td>thu dịch vụ − chi dịch vụ</td>
+<td>Phải lấy <strong>thuần</strong>; thu gộp không so được giữa các ngân hàng</td>
+</tr>
+<tr>
+<td>Phân rã theo dòng</td>
+<td>bancassurance · tài trợ thương mại · thanh toán · thẻ · ngân hàng số</td>
+<td>Mỗi dòng có động lực và độ bền khác nhau</td>
+</tr>
+<tr>
+<td>Thu nhập từ <strong>thu hồi nợ đã xử lý</strong></td>
+<td></td>
+<td>Có thật, nhưng <strong>không bền</strong> — đừng ngoại suy</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><span class="tag tag-bay">BẪY</span> <strong>Thu nhập bất thường làm phồng tỷ trọng ngoài lãi.</strong> Đánh giá lại tài sản, bán công ty con,
+hoàn nhập dự phòng — tất cả rơi vào "thu khác".</p>
+<p><span class="tag tag-case">VCB</span> <em>Minh hoạ:</em> thu khác 6 tháng đầu 2026 tăng <strong>+170%</strong> do một khoản đánh giá lại tài sản. Loại
+trừ khoản đó, thu ngoài lãi chỉ tăng ~6,5%. Ai đọc con số +170% rồi ngoại suy sẽ sai rất xa. <strong>Luôn
+hỏi: khoản này có lặp lại năm sau không?</strong></p>
+</blockquote>
+<hr />
+<h3 id="36-quan-ly-tai-san-no-va-thanh-khoan-alm-treasury">3.6 Quản lý tài sản – nợ và thanh khoản <em>(ALM / Treasury)</em></h3>
+<p><strong>Làm gì:</strong> khớp kỳ hạn và lãi suất giữa hai bên bảng cân đối, giữ thanh khoản, quản lý trạng thái
+ngoại hối, đầu tư danh mục trái phiếu. Đây là quy trình <strong>vô hình với khách hàng nhưng quyết định NIM</strong>.</p>
+<p><strong>Grain:</strong> dải kỳ hạn × cuối kỳ (snapshot).</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Chỉ số</th>
+<th>Công thức</th>
+<th>Ý nghĩa — đọc thế nào</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LDR</strong> — ⚠️ <strong>hai nghĩa khác nhau</strong></td>
+<td><em>(a)</em> cho vay ÷ tiền gửi khách hàng — <strong>thô</strong><br><em>(b)</em> LDR <strong>quy định</strong> theo công thức của NHNN</td>
+<td><em>(a)</em> đo <strong>cấu trúc tài trợ</strong>; <em>(b)</em> là chỉ số <strong>tuân thủ</strong> với mẫu số rộng hơn và có loại trừ. <strong>Hai con số này chênh nhau rất nhiều và không thay thế nhau</strong></td>
+</tr>
+<tr>
+<td><strong>Vốn ngắn hạn cho vay trung–dài hạn</strong></td>
+<td>theo công thức NHNN</td>
+<td>Đo mức độ ngân hàng dùng nguồn ngắn để tài trợ tài sản dài — rủi ro kỳ hạn cốt lõi</td>
+</tr>
+<tr>
+<td>Tỷ lệ dự trữ thanh khoản</td>
+<td>tài sản thanh khoản cao ÷ tổng nợ phải trả</td>
+<td>Chịu được bao lâu nếu tiền bị rút</td>
+</tr>
+<tr>
+<td>Khả năng chi trả 30 ngày</td>
+<td></td>
+<td>Kịch bản căng thẳng ngắn hạn</td>
+</tr>
+<tr>
+<td>Khe hở kỳ hạn / khe hở lãi suất</td>
+<td>tài sản − nợ theo từng dải</td>
+<td>Nếu lãi suất đổi thì NIM đổi bao nhiêu</td>
+</tr>
+<tr>
+<td>Trạng thái ngoại hối</td>
+<td></td>
+<td>Rủi ro tỷ giá</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><span class="tag tag-bay">BẪY</span> <span class="tag tag-case">TCB</span> <span class="tag tag-case">VCB</span> <strong>Đặt "LDR quy định" cạnh "cho vay ÷ tiền gửi thô" rồi so.</strong> Ở hai ca mẫu:
+một bên công bố LDR quy định <strong>80,1%</strong> (trần 85%) nhưng tỷ lệ thô là <strong>~132%</strong>; bên kia có tỷ lệ thô
+<strong>102%</strong>. Nếu đặt 80,1% cạnh 102% thì kết luận ngược hẳn với thực tế. <strong>Trước khi so hai con số cùng
+tên, đọc chú thích định nghĩa.</strong></p>
+<p><strong>📌 NIM không phải thành tích của một phòng ban.</strong> Nó là <em>kết quả</em> của: cơ cấu danh mục cho vay
+(3.2) × cơ cấu nguồn vốn (3.1) × quyết định kỳ hạn của ALM (3.6). Muốn giải thích NIM tăng hay giảm
+thì phải mở cả ba, không phải hỏi một người.</p>
+</blockquote>
+<hr />
+<h3 id="37-quan-ly-von-va-tuan-thu-capital-regulatory-compliance">3.7 Quản lý vốn và tuân thủ <em>(Capital &amp; regulatory compliance)</em></h3>
+<p><strong>Làm gì:</strong> duy trì vốn tự có đủ theo quy định, tính tài sản có rủi ro, lập kế hoạch vốn, báo cáo tuân
+thủ. Quy trình này <strong>chặn tốc độ tăng trưởng</strong> của mọi quy trình khác.</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Chỉ số</th>
+<th>Công thức</th>
+<th>Ý nghĩa — đọc thế nào</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CAR</strong> <em>(hệ số an toàn vốn)</em></td>
+<td>vốn tự có ÷ tài sản có rủi ro (RWA)</td>
+<td><strong>Giấy phép tăng trưởng.</strong> Muốn cho vay thêm phải có vốn thêm, hoặc phải cho vay vào chỗ có hệ số rủi ro thấp hơn</td>
+</tr>
+<tr>
+<td>CAR cấp 1 <em>(Tier 1)</em></td>
+<td>vốn cấp 1 ÷ RWA</td>
+<td>Phần vốn <strong>chịu lỗ khi ngân hàng còn hoạt động</strong> — chất lượng hơn tổng CAR, vì vốn cấp 2 (nợ thứ cấp…) chỉ chịu lỗ khi đã đổ vỡ</td>
+</tr>
+<tr>
+<td>CET1 <em>(vốn cấp 1 cơ bản)</em></td>
+<td>vốn cấp 1 cơ bản ÷ RWA</td>
+<td>Lớp <strong>chịu lỗ đầu tiên</strong> — chủ yếu vốn cổ phần và lợi nhuận giữ lại. Khung mới đo cả tầng này (mục 5.4)</td>
+</tr>
+<tr>
+<td><strong>Đòn bẩy</strong></td>
+<td>tổng tài sản ÷ vốn chủ sở hữu</td>
+<td>Khuếch đại cả lợi nhuận lẫn tổn thất</td>
+</tr>
+<tr>
+<td>RWA / tổng tài sản</td>
+<td></td>
+<td><strong>Mật độ rủi ro</strong> của danh mục — hai ngân hàng cùng tài sản có thể có RWA rất khác nhau</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>📌 Vì sao chia cổ tức tiền mặt làm CAR giảm.</strong> Cổ tức tiền mặt là tiền ra khỏi vốn chủ → tử số của
+CAR nhỏ đi mà RWA không đổi.</p>
+<p><span class="tag tag-case">TCB</span> <em>Minh hoạ:</em> CAR giảm từ 15,2% xuống 15,0% trong một quý, nguyên nhân được nêu rõ là chi
+khoảng 5 nghìn tỷ cổ tức tiền mặt. Đây là ví dụ tốt cho thấy <strong>vốn là một nguồn lực khan hiếm phải
+phân bổ</strong>, không phải một con số kế toán.</p>
+<p><span class="tag tag-bay">BẪY</span> <strong>CAR tính theo văn bản nào?</strong> Việt Nam đang chuyển từ <strong>Thông tư 41/2016</strong> sang <strong>Thông tư
+14/2025/TT-NHNN</strong> (hiệu lực 15/9/2025), và phạm vi có thể là <strong>hợp nhất</strong> hoặc <strong>riêng lẻ</strong>. Một ca mẫu
+trong thư viện này đổi cả văn bản lẫn phạm vi <strong>giữa chuỗi thời gian</strong> rồi vẫn đặt hai con số cạnh
+nhau. Xem mục 6.4. <span class="tag tag-case">TCB</span> vẫn công bố theo TT 41/2016 hợp nhất, <span class="tag tag-case">VCB</span> từ Q1/2026 theo TT 14/2025
+riêng lẻ — nên CAR của hai ca mẫu hiện <strong>không so trực tiếp được</strong>.</p>
+</blockquote>
+<hr />
+<h3 id="38-khach-hang-va-trai-nghiem-customer-lifecycle-cx">3.8 Khách hàng và trải nghiệm <em>(Customer lifecycle &amp; CX)</em></h3>
+<p><strong>Làm gì:</strong> thu hút khách mới, bán chéo, giữ khách, đo sự hài lòng, phân khúc.</p>
+<p><strong>Grain:</strong> khách × sản phẩm × tháng (snapshot holdings) · một phiếu survey (sự kiện).</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Chỉ số</th>
+<th>Công thức</th>
+<th>Ý nghĩa — đọc thế nào</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Số khách hàng · khách mới · khách active</td>
+<td></td>
+<td>"Đã mở tài khoản" và "đang dùng" là hai con số rất khác nhau</td>
+</tr>
+<tr>
+<td><strong>Product penetration</strong> <em>(sản phẩm/khách)</em></td>
+<td>Σ sản phẩm đang giữ ÷ số khách, <strong>bình quân theo tháng</strong></td>
+<td>Đo bán chéo. Khách giữ nhiều sản phẩm thì <strong>khó rời đi hơn và rẻ hơn để phục vụ</strong></td>
+</tr>
+<tr>
+<td>Tỷ lệ khách nhiều sản phẩm</td>
+<td></td>
+<td>Cùng ý nghĩa, dạng phân bố</td>
+</tr>
+<tr>
+<td><strong>NPS</strong></td>
+<td>%Promoter − %Detractor</td>
+<td><strong>Hiệu của hai tỷ lệ</strong>, KHÔNG phải điểm trung bình</td>
+</tr>
+<tr>
+<td>CASA / khách · thu nhập / khách</td>
+<td></td>
+<td>Nối trải nghiệm với tài chính — đây là chỗ CX chứng minh giá trị</td>
+</tr>
+<tr>
+<td>Tỷ lệ rời bỏ / ngủ đông <em>(churn, dormancy)</em></td>
+<td></td>
+<td>Chi phí thu hút khách mới luôn cao hơn giữ khách cũ</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><span class="tag tag-bay">BẪY</span> <span class="tag tag-other">v2</span> Trường "lý do" trong dữ liệu NPS thường <strong>null rất nhiều và null lệch</strong>: người không
+hài lòng thì luôn nêu lý do, người hài lòng thì hầu như không. Trong bộ dữ liệu tham chiếu của thư
+viện này, null ~50% tổng nhưng <strong>0% ở nhóm Detractor và ~73% ở nhóm Promoter</strong>. Nghĩa là biểu đồ
+"lý do khách phản hồi" thực chất là "lý do khách <strong>không hài lòng</strong>". Phải nói ra, đừng che.</p>
+</blockquote>
+<hr />
+<h3 id="39-van-hanh-va-chi-phi-operations-cost">3.9 Vận hành và chi phí <em>(Operations &amp; cost)</em></h3>
+<p><strong>Làm gì:</strong> mạng lưới chi nhánh, nhân sự, công nghệ, xử lý giao dịch nội bộ.</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Chỉ số</th>
+<th>Công thức</th>
+<th>Ý nghĩa — đọc thế nào</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CIR</strong> <em>(cost-to-income ratio)</em></td>
+<td>OPEX ÷ TOI</td>
+<td><strong>Tạo ra một đồng thu nhập thì tốn bao nhiêu.</strong> Chỉ số hiệu quả quan trọng nhất của ngân hàng</td>
+</tr>
+<tr>
+<td>Cơ cấu OPEX</td>
+<td>chi cho <strong>nhân viên</strong> · quản lý công vụ · tài sản · khác</td>
+<td>Nhân viên thường là cấu phần lớn nhất → CIR gắn chặt với chính sách lương và năng suất</td>
+</tr>
+<tr>
+<td>TOI / nhân viên · TOI / chi nhánh</td>
+<td></td>
+<td>Năng suất</td>
+</tr>
+<tr>
+<td>Số chi nhánh, phòng giao dịch</td>
+<td></td>
+<td>Đọc kèm tỷ trọng kênh số (3.4): mạng lưới co lại khi số hoá lên</td>
+</tr>
+<tr>
+<td>SLA thời gian phục vụ</td>
+<td>Avg(thời gian xử lý)</td>
+<td>Chỉ số trải nghiệm ở kênh vật lý</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><span class="tag tag-bay">BẪY</span> <span class="tag tag-other">v2</span> <strong>Chỉ số thời gian phục vụ thường chỉ tồn tại ở quầy giao dịch.</strong> Ở bộ dữ liệu tham
+chiếu, trường này null ~79% vì các kênh khác không sinh ra nó. Tính bình quân trên toàn kênh ra một
+con số <strong>vô nghĩa</strong> — phải lọc về đúng kênh quầy trước khi tính.</p>
+</blockquote>
+<hr />
+<h3 id="310-ke-hoach-va-chi-tieu-planning-targets">3.10 Kế hoạch và chỉ tiêu <em>(Planning &amp; targets)</em></h3>
+<p><strong>Làm gì:</strong> phân bổ chỉ tiêu xuống khối, chi nhánh, cá nhân; theo dõi thực hiện.</p>
+<p><strong>Grain:</strong> chi nhánh × tháng × loại chỉ tiêu.</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Chỉ số</th>
+<th>Công thức</th>
+<th>Ý nghĩa — đọc thế nào</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Achievement %</strong></td>
+<td>thực hiện ÷ chỉ tiêu</td>
+<td>Chỉ có nghĩa khi <strong>cùng grain</strong> với chỉ tiêu</td>
+</tr>
+<tr>
+<td>Mức sử dụng hạn mức tín dụng được cấp</td>
+<td>dư nợ tăng thêm ÷ room được cấp</td>
+<td>Đặc thù Việt Nam (phần 8)</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><span class="tag tag-bay">BẪY</span> Bảng chỉ tiêu thường lưu <strong>dạng ngang</strong> (mỗi tháng một cột). Không unpivot về dạng dọc thì
+không join được với số thực hiện. Đây là lỗi kỹ thuật, nhưng nó chặn toàn bộ báo cáo so sánh
+kế hoạch–thực hiện.</p>
+<p><span class="tag tag-bay">BẪY</span> <strong>Chỉ tiêu huy động/dư nợ giao theo <em>số dư cuối kỳ</em> hay <em>số dư bình quân</em>?</strong> Chi nhánh được
+chấm theo số cuối kỳ thì có động cơ kéo tiền gửi vào đúng ngày chốt rồi để nó chảy đi sau đó. Muốn
+biết một chi nhánh "đạt kế hoạch" thật hay chỉ đạt vào ngày cuối tháng, đặt <strong>số dư cuối kỳ cạnh số dư
+bình quân tháng</strong> — khoảng cách lớn là dấu hiệu làm đẹp số.</p>
+</blockquote>
+<hr />
+<h3 id="311-phong-chong-rua-tien-gian-lan-va-an-ninh-giao-dich-aml-fraud">3.11 Phòng chống rửa tiền, gian lận và an ninh giao dịch <em>(AML / Fraud)</em></h3>
+<p><strong>Làm gì:</strong> định danh khách hàng (KYC), giám sát giao dịch để phát hiện rửa tiền, báo cáo giao dịch
+đáng ngờ, chặn lừa đảo và chiếm đoạt tài khoản. Quy trình này <strong>không tạo ra doanh thu</strong>, nhưng vi
+phạm thì bị phạt nặng và mất uy tín — và ở Việt Nam nó đã <strong>thay đổi hình dạng dữ liệu khách hàng</strong>
+(xem bẫy dưới).</p>
+<p><strong>Grain:</strong> một giao dịch (sự kiện) · một cảnh báo (sự kiện) · khách hàng × trạng thái xác thực
+(snapshot).</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Chỉ số</th>
+<th>Công thức</th>
+<th>Ý nghĩa — đọc thế nào</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Số cảnh báo giao dịch · tỷ lệ cảnh báo giả <em>(false positive)</em></td>
+<td>cảnh báo đóng không vi phạm ÷ tổng cảnh báo</td>
+<td>Hệ thống quét quá rộng thì nhân viên chìm trong cảnh báo giả; quá hẹp thì lọt. Với hệ thống quét theo luật, tỷ lệ cảnh báo giả hay được dẫn trong ngành là <strong>trên 90%</strong> — cao như vậy là bình thường, không phải lỗi</td>
+</tr>
+<tr>
+<td>Số báo cáo giao dịch đáng ngờ <em>(STR)</em></td>
+<td></td>
+<td>Đầu ra thật sự của quy trình AML</td>
+</tr>
+<tr>
+<td>Giao dịch giá trị lớn phải báo cáo</td>
+<td>đếm giao dịch <strong>từ 400 triệu đồng trở lên</strong></td>
+<td>Ngưỡng <span class="tag tag-qd">QĐ</span> — xem dưới</td>
+</tr>
+<tr>
+<td>Tổn thất do gian lận</td>
+<td>Σ số tiền bị chiếm đoạt ÷ tổng giá trị giao dịch</td>
+<td>Thường tính theo bps; ở thẻ và ngân hàng số là chỉ số theo dõi hàng ngày</td>
+</tr>
+<tr>
+<td>Tỷ lệ khách hàng đã xác thực sinh trắc học</td>
+<td></td>
+<td>Chỉ số tuân thủ, đồng thời quyết định <strong>bao nhiêu khách còn giao dịch online được</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><span class="tag tag-qd">QĐ</span> Ba mốc cần biết:</p>
+<ul>
+<li><strong>Giao dịch giá trị lớn phải báo cáo: từ 400 triệu đồng trở lên</strong> — Quyết định 11/2023/QĐ-TTg, hiệu
+  lực 01/12/2023 (trước đó là 300 triệu), theo Luật Phòng, chống rửa tiền 2022.</li>
+<li><strong>Xác thực sinh trắc học</strong> — Quyết định 2345/QĐ-NHNN, hiệu lực 01/7/2024: chuyển tiền online <strong>trên
+  10 triệu đồng/giao dịch</strong> hoặc <strong>tổng trên 20 triệu đồng/ngày</strong> phải xác thực bằng khuôn mặt/vân tay.</li>
+<li><strong>Tài khoản chưa đối chiếu sinh trắc học bị dừng giao dịch online từ 01/01/2025</strong> — Thông tư
+  17/2024/TT-NHNN; khách chỉ còn giao dịch được tại quầy.</li>
+</ul>
+<blockquote>
+<p><span class="tag tag-bay">BẪY</span> <strong>Chuỗi "số khách hàng" và "khách active" có một điểm gãy quanh 01/01/2025.</strong> Việc dừng giao
+dịch online với tài khoản chưa xác thực sinh trắc học làm số khách còn giao dịch được giảm theo <strong>quy
+định</strong>, không phải theo hành vi — và nhiều ngân hàng đồng thời dọn tài khoản ngủ đông. Một biểu đồ
+"khách active" vắt qua mốc đó mà không chú thích sẽ bị đọc thành "khách rời bỏ".</p>
+<p>📌 <strong>Vì sao người làm phân tích phải biết quy trình này.</strong> Dữ liệu giao dịch trong ngân hàng là dữ liệu
+nhạy cảm nhất, và ngoài quy định riêng của ngành (bí mật thông tin khách hàng trong Luật các TCTD),
+việc xử lý nó còn chịu <strong>Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15</strong> (hiệu lực 01/01/2026). Thực tế
+hàng ngày: dữ liệu mang ra khỏi hệ thống để phân tích thường phải <strong>ẩn danh hoặc mã hoá mã khách</strong>,
+và một dashboard cho phép lọc tới từng khách là một quyết định cần người có thẩm quyền ký.</p>
+</blockquote>
+<hr />
+<h2 id="4-cay-metric-cac-chi-so-noi-voi-nhau-ra-sao">4. Cây metric — các chỉ số nối với nhau ra sao</h2>
+<p>Phần 3 liệt kê chỉ số theo quy trình. Phần này cho thấy <strong>chúng gặp nhau ở đâu</strong> — và đó là điều biến
+một danh sách chỉ số thành một cách hiểu ngành.</p>
+<div class="wide"><pre><code>                    ROE  =  ROA  ×  Đòn bẩy
+                             │           │
+                             │           └── bị CAR chặn trên  ◄── 3.7 Vốn &amp; tuân thủ
+                             │
+              ROA = Lợi nhuận sau thuế ÷ Tổng tài sản bình quân
+                             │
+        ┌────────────────────┴─────────────────────┐
+        │                    │                     │
+      TOI              −  OPEX             −  Chi phí dự phòng
+        │                    │                     │
+        │                  CIR  ◄── 3.9         Chi phí tín dụng  ◄── 3.3
+        │                                          │
+   ┌────┴─────┐                              phân loại nợ 5 nhóm  ◄── phần 5
+   │          │                              tài sản bảo đảm
+  NII    Thu ngoài lãi  ◄── 3.5
+   │
+  NIM = NII ÷ tài sản sinh lời bình quân
+   │
+   ├── Lợi suất tài sản   ◄── 3.2  cơ cấu danh mục: KHCN/KHDN · ngành · kỳ hạn · TSBĐ
+   │
+   └── Chi phí vốn        ◄── 3.1  CASA · cơ cấu nguồn · uy tín tín dụng
+                          ◄── 3.6  quyết định kỳ hạn của ALM
+</code></pre></div>
+<p>Ba điều đọc ra từ cây này:</p>
+<p><strong>1. Không có chỉ số nào đứng một mình.</strong> CASA không phải một chỉ tiêu doanh số — nó là một đầu vào của
+chi phí vốn, tức là của NIM, tức là của ROE. Ai đặt target CASA cho chi nhánh mà không nối tới chi phí
+vốn thì đang đo một thứ không biết để làm gì.</p>
+<p><strong>2. <code>ROE = ROA × Đòn bẩy</code> là đẳng thức, không phải mô hình.</strong> Nên <strong>ROE không phải thước đo chất
+lượng</strong>: đòn bẩy là một <em>lựa chọn về vốn</em>, không phải một thành tích.</p>
+<blockquote>
+<p><span class="tag tag-case">TCB</span> <span class="tag tag-case">VCB</span> <em>Minh hoạ:</em> một ca mẫu có ROE <strong>18,2%</strong> với ROA 1,70%; ca mẫu kia ROE <strong>16,0%</strong> với
+ROA <strong>2,35%</strong>. Ngân hàng có ROE <strong>cao hơn</strong> lại có hiệu quả tài sản <strong>thấp hơn 38%</strong> — toàn bộ chênh
+lệch đến từ đòn bẩy (10,7× vs 6,7×). <strong>Luôn trình bày ROE cùng ROA và đòn bẩy: ba cột, không phải
+một.</strong></p>
+</blockquote>
+<p><strong>3. Bốn nơi một ngân hàng có thể thắng, và chúng đánh đổi nhau.</strong> Biên lãi dày (NIM) · thu ngoài lãi
+đa dạng · vận hành gọn (CIR) · rủi ro thấp (chi phí tín dụng). Cho vay lãi cao thường đi kèm rủi ro
+cao; cắt chi phí quá tay thì mất năng lực bán. <strong>Không ngân hàng nào tối ưu cả bốn</strong>, và mô hình kinh
+doanh chính là lựa chọn thắng ở đâu.</p>
+<h3 id="41-loi-nhuan-cua-mot-chi-nhanh-mot-san-pham-inh-gia-ieu-chuyen-von-noi-bo-ftp-nen">4.1 Lợi nhuận của một chi nhánh, một sản phẩm — định giá điều chuyển vốn nội bộ (FTP) — <span class="tag tag-nen">NỀN</span></h3>
+<p>Cây ở trên là <strong>toàn ngân hàng</strong>. Nhưng câu hỏi thường gặp nhất trong công việc phân tích lại là <em>"chi
+nhánh này / sản phẩm này / khách hàng này lãi bao nhiêu?"</em> — và ở đó có một vấn đề mà ngành khác không
+có: <strong>chi nhánh huy động tiền và chi nhánh cho vay thường không phải là một.</strong> Chi nhánh A nhận nhiều tiền
+gửi, chi nhánh B cho vay nhiều. NII toàn hàng chia cho ai?</p>
+<p>Câu trả lời là <strong>FTP</strong> <em>(Funds Transfer Pricing — định giá điều chuyển vốn nội bộ)</em>: một <strong>hội sở</strong> đứng
+giữa, "mua" mọi đồng tiền gửi và "bán" vốn cho mọi khoản vay, theo một <strong>giá vốn nội bộ</strong> do hội sở
+(thường là khối Nguồn vốn / ALM) đặt.</p>
+<div class="wide"><pre><code>Khách gửi tiền ──4%──►  Chi nhánh A  ──bán cho hội sở giá FTP 5%──►  Hội sở / ALM
+                        lãi huy động = 5% − 4% = 1%
+
+Hội sở / ALM  ──bán vốn giá FTP 6%──►  Chi nhánh B  ──cho khách vay 9%──►  Khách vay
+                                        lãi cho vay = 9% − 6% = 3%
+
+Hội sở giữ phần còn lại (6% − 5% trong ví dụ) = phần bù kỳ hạn và rủi ro lãi suất mà ALM gánh
+</code></pre></div>
+<p>Ba hệ quả mà người dựng dashboard hiệu quả chi nhánh <strong>bắt buộc</strong> phải biết:</p>
+<ol>
+<li><strong>Tiền gửi cũng có lợi nhuận.</strong> Không có FTP thì một chi nhánh huy động giỏi trông như chỉ toàn chi
+   phí lãi. Có FTP thì nó được ghi nhận đúng phần đóng góp — đó là cách CASA (3.1) trở thành "doanh số"
+   của chi nhánh.</li>
+<li><strong>Lợi nhuận chi nhánh là con số <em>được định nghĩa</em>, không phải con số <em>đo được</em>.</strong> Đổi đường cong FTP
+   thì lợi nhuận chuyển từ chi nhánh này sang chi nhánh khác mà toàn hàng không đổi một đồng. Nên đặt
+   hai kỳ cạnh nhau phải hỏi: <strong>giá FTP có đổi giữa hai kỳ không?</strong></li>
+<li><strong>Tổng lợi nhuận các chi nhánh ≠ lợi nhuận toàn hàng.</strong> Phần chênh nằm ở hội sở (kết quả ALM, đầu tư,
+   chi phí chung chưa phân bổ). Một dashboard cộng lợi nhuận chi nhánh rồi so với BCTC sẽ luôn lệch.</li>
+</ol>
+<blockquote>
+<p><span class="tag tag-bay">BẪY</span> <strong>Chi phí và dự phòng phân bổ xuống chi nhánh cũng là quy ước.</strong> Chi phí hội sở, CNTT, thương
+hiệu được chia theo một khoá phân bổ (theo dư nợ, theo số nhân viên, theo TOI…). Đổi khoá phân bổ là
+đổi thứ hạng chi nhánh. Muốn so công bằng giữa các đơn vị thì hay dừng ở <strong>lợi nhuận trực tiếp</strong> (trước
+chi phí phân bổ) và nói rõ điều đó.</p>
+</blockquote>
+<h3 id="42-thi-truong-inh-gia-mot-ngan-hang-bang-gi-nen">4.2 Thị trường định giá một ngân hàng bằng gì — <span class="tag tag-nen">NỀN</span></h3>
+<p>Nếu đọc báo cáo phân tích của công ty chứng khoán, bạn sẽ gặp <strong>P/B</strong> <em>(giá ÷ giá trị sổ sách mỗi cổ
+phần)</em> nhiều hơn P/E. Lý do: tài sản của ngân hàng phần lớn là tài sản tài chính ghi gần với giá trị
+thật, nên <strong>vốn chủ sở hữu là thước đo tự nhiên của giá trị</strong>, và thị trường trả thêm (P/B &gt; 1) khi tin
+rằng ngân hàng sinh lời trên vốn đó <strong>cao hơn chi phí vốn cổ phần</strong>.</p>
+<p>Nối về cây metric: <strong>P/B cao đi với ROE cao <em>và bền</em></strong>. ROE cao nhờ đòn bẩy hay nhờ một quý có thu nhập
+bất thường (3.5) thì không được trả giá cao lâu. Đó là lý do nhà đầu tư soi đúng những chỗ phần này đã
+chỉ ra: ROE đến từ tầng nào, và tầng đó có lặp lại được không.</p>
+<hr />
+<h2 id="5-quy-inh-bat-buoc-phai-biet-q">5. Quy định bắt buộc phải biết — <span class="tag tag-qd">QĐ</span></h2>
+<p>Đây là ranh giới quan trọng nhất khi làm số trong ngành ngân hàng:</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th></th>
+<th>Ví dụ</th>
+<th>Tính chất</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Quyết định phân tích</strong></td>
+<td>định nghĩa "khách hàng active", cách phân khúc</td>
+<td>Tranh luận được, <strong>cần một người chủ ý nghĩa ký tên</strong></td>
+</tr>
+<tr>
+<td><strong>Quy định <span class="tag tag-qd">QĐ</span></strong></td>
+<td>nhóm nào là nợ xấu, tỷ lệ trích lập, trần LDR</td>
+<td><strong>Không tranh luận, chỉ tuân thủ</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Lẫn hai loại này là lỗi nghề nghiệp: tự đặt ngưỡng nợ xấu là làm sai luật, còn coi một lựa chọn phân
+tích là "chuẩn ngành" là trốn trách nhiệm.</p>
+<h3 id="51-nam-nhom-no-va-ty-le-du-phong">5.1 Năm nhóm nợ và tỷ lệ dự phòng</h3>
+<p>Cơ sở: <strong>Thông tư 31/2024/TT-NHNN</strong> (hiệu lực 01/7/2024, <strong>thay thế Thông tư 11/2021</strong>) và <strong>Nghị định
+86/2024/NĐ-CP</strong> (11/7/2024). Sửa đổi thủ tục bởi <strong>Thông tư 37/2025/TT-NHNN</strong> (hiệu lực 15/12/2025 —
+<strong>không</strong> thay đổi 5 nhóm hay tỷ lệ trích lập).</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th style="text-align: center;">Nhóm</th>
+<th>Tên</th>
+<th>Điều kiện chính</th>
+<th style="text-align: center;"><strong>Tỷ lệ dự phòng cụ thể</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td>Nợ đủ tiêu chuẩn</td>
+<td>trong hạn; hoặc quá hạn <strong>dưới 10 ngày</strong></td>
+<td style="text-align: center;"><strong>0%</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2</strong></td>
+<td>Nợ cần chú ý</td>
+<td>quá hạn <strong>10–90 ngày</strong></td>
+<td style="text-align: center;"><strong>5%</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3</strong></td>
+<td>Nợ dưới tiêu chuẩn</td>
+<td>quá hạn <strong>91–180 ngày</strong></td>
+<td style="text-align: center;"><strong>20%</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4</strong></td>
+<td>Nợ nghi ngờ</td>
+<td>quá hạn <strong>181–360 ngày</strong></td>
+<td style="text-align: center;"><strong>50%</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>5</strong></td>
+<td>Nợ có khả năng mất vốn</td>
+<td>quá hạn <strong>trên 360 ngày</strong></td>
+<td style="text-align: center;"><strong>100%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Nợ xấu (NPL) = nhóm 3 + 4 + 5.</strong></p>
+<p>Bảng trên chỉ ghi điều kiện <strong>số ngày quá hạn</strong>, nhưng đó không phải con đường duy nhất vào một nhóm. Hai
+quy tắc nữa quyết định hình dạng dữ liệu:</p>
+<ul>
+<li><strong>Cơ cấu lại cũng đẩy nhóm, dù chưa quá hạn ngày nào.</strong> Điều chỉnh kỳ hạn trả nợ lần đầu còn trong hạn
+  → nhóm 2; gia hạn nợ lần đầu → nhóm 3; cơ cấu lại lần đầu mà lại quá hạn đến 90 ngày → nhóm 4 (chi
+  tiết: <span class="path" title="02-metrics/npl-classification.md">02-metrics/npl-classification.md</span>). Nghĩa là <strong>DPD = 0 không
+  có nghĩa là nhóm 1</strong>.</li>
+<li><strong>Một khách hàng, một nhóm nợ — và nhóm đó là nhóm xấu nhất trên toàn hệ thống.</strong> Mọi khoản vay và cam
+  kết ngoại bảng của một khách tại một ngân hàng phải cùng <strong>nhóm cao nhất</strong> trong số đó. Sau đó <strong>CIC</strong>
+  (Trung tâm Thông tin tín dụng Quốc gia, thuộc NHNN) tổng hợp nhóm nợ của khách <strong>trên mọi TCTD</strong> và gửi
+  lại; nếu nhóm ngân hàng tự phân loại thấp hơn nhóm CIC cung cấp thì ngân hàng <strong>phải điều chỉnh lên</strong>
+  theo CIC (TT 31/2024).</li>
+</ul>
+<blockquote>
+<p><span class="tag tag-bay">BẪY</span> <strong>Nhóm nợ có grain là <em>khách hàng</em>, không phải <em>khoản vay</em>.</strong> Một khách trả đúng hạn khoản vay
+mua nhà ở ngân hàng bạn vẫn có thể bị kéo sang nhóm 3 vì một khoản thẻ tín dụng quá hạn <strong>ở ngân hàng
+khác</strong>. Hai hệ quả khi dựng mô hình: (1) không suy được nhóm nợ từ DPD của chính khoản vay; (2) nhóm nợ
+có thể <strong>đổi giữa hai kỳ mà không có sự kiện nào trong dữ liệu của bạn</strong> — nguyên nhân nằm ở dữ liệu
+CIC, không nằm trong bảng giao dịch.</p>
+</blockquote>
+<p>⚠️ Rất nhiều tài liệu học còn dẫn Thông tư 11/2021 — dẫn nó bây giờ là <strong>dẫn văn bản hết hiệu lực</strong>.
+Đây là lý do mọi mảnh <span class="tag tag-qd">QĐ</span> phải ghi ngày và phải kiểm lại, không học một lần rồi tin mãi.</p>
+<h3 id="52-hai-loai-du-phong-va-vi-sao-tsb-quan-trong">5.2 Hai loại dự phòng — và vì sao TSBĐ quan trọng</h3>
+<div class="wide"><table>
+<thead>
+<tr>
+<th></th>
+<th>Công thức</th>
+<th>Ghi nhớ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dự phòng chung</strong></td>
+<td><strong>0,75%</strong> × dư nợ nhóm 1–4</td>
+<td>Trích cho cả danh mục, <strong>trừ nhóm 5</strong></td>
+</tr>
+<tr>
+<td><strong>Dự phòng cụ thể</strong></td>
+<td>(dư nợ − <strong>giá trị TSBĐ được khấu trừ</strong>) × tỷ lệ theo nhóm</td>
+<td>Trích theo từng khoản</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>📌 Đây là điều người mới hay bỏ qua.</strong> Dự phòng cụ thể tính trên <strong>phần dư nợ sau khi trừ tài sản
+bảo đảm</strong>, không trên toàn dư nợ. Nên <strong>hai khoản cùng nhóm 5 có thể trích lập rất khác nhau</strong> tuỳ
+tài sản bảo đảm. Một mô hình dữ liệu chỉ có cột "nhóm nợ" mà không có TSBĐ <strong>không thể</strong> dự đoán
+được chi phí dự phòng.</p>
+</blockquote>
+<p>Hai quy tắc phụ, đều có thật và đều ảnh hưởng cách đọc số:</p>
+<ul>
+<li><strong>Xung đột định lượng vs định tính → lấy nhóm cao hơn</strong> (xấu hơn). Nghĩa là nhóm nợ là <em>max</em> của hai
+  phương pháp, không phải kết quả của một phương pháp.</li>
+<li><strong>Cam kết ngoại bảng cũng phải phân 5 nhóm</strong> — bảo lãnh, chấp nhận thanh toán, cam kết cho vay không
+  huỷ ngang. Nghĩa là một phần rủi ro tín dụng <strong>không nằm trên bảng cân đối</strong>.</li>
+</ul>
+<h3 id="53-cam-bay-quan-trong-nhat-ve-no-xau-bo-loc-chinh-sach">5.3 Cạm bẫy quan trọng nhất về nợ xấu: bộ lọc chính sách</h3>
+<p>Trong một số trường hợp, nhà nước cho phép <strong>cơ cấu lại thời hạn trả nợ mà giữ nguyên nhóm nợ</strong> — ví
+dụ khách hàng bị thiệt hại do thiên tai, hoặc theo các chương trình hỗ trợ.</p>
+<blockquote>
+<p><strong>📌 Hệ quả:</strong> <strong>nhóm nợ không phải một phán quyết rủi ro thuần — nó là rủi ro đã đi qua một bộ lọc
+chính sách.</strong> NPL công bố có thể thấp hơn rủi ro thực tế đúng bằng lượng nợ đã cơ cấu nhưng giữ
+nguyên nhóm. Đây <strong>không phải kế toán sáng tạo</strong>, mà là <strong>tuân thủ quy định</strong>.</p>
+<p>Muốn đo được rủi ro thật thì cần thêm một cờ <em>"đã cơ cấu / giữ nguyên nhóm theo chính sách"</em> bên cạnh
+nhóm nợ — một cột mà hầu như không ngân hàng nào công bố tách riêng.</p>
+</blockquote>
+<p><strong>"Nợ xấu mở rộng" — cách giới phân tích đọc qua bộ lọc.</strong> Vì NPL nội bảng không phải toàn bộ rủi ro,
+báo cáo phân tích ở Việt Nam thường cộng thêm các lớp sau để ra một con số "nợ có vấn đề" rộng hơn <span class="tag tag-nen">NỀN</span>:</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Lớp</th>
+<th>Vì sao không nằm trong NPL công bố</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nợ nhóm 2</td>
+<td>Chưa phải nợ xấu theo định nghĩa, nhưng là <strong>hàng chờ</strong> của nợ xấu (3.3)</td>
+</tr>
+<tr>
+<td>Nợ cơ cấu giữ nguyên nhóm theo chính sách</td>
+<td>Bộ lọc chính sách ở trên</td>
+</tr>
+<tr>
+<td>Nợ đã bán cho <strong>VAMC</strong> đổi lấy trái phiếu đặc biệt</td>
+<td>Giai đoạn khoảng 2013–2020, ngân hàng "bán" nợ xấu cho Công ty Quản lý tài sản các TCTD (VAMC) và nhận trái phiếu đặc biệt → nợ <strong>rời bảng cân đối</strong> nhưng rủi ro vẫn ở lại. Phần lớn ngân hàng lớn đã xử lý xong, nhưng số liệu lịch sử giai đoạn đó <strong>đọc NPL thấp hơn thực chất</strong></td>
+</tr>
+<tr>
+<td>Trái phiếu doanh nghiệp có vấn đề</td>
+<td>Tuỳ ngân hàng có gộp vào NPL hay không (bẫy ở 3.2 và 3.3)</td>
+</tr>
+<tr>
+<td>Lãi dự thu lớn bất thường</td>
+<td>Lãi đã ghi nhận nhưng chưa thu được tiền — xem 5.5</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Xử lý nợ xấu đã có công cụ luật hoá.</strong> Luật sửa đổi Luật các TCTD <strong>số 96/2025/QH15</strong> (hiệu lực
+15/10/2025) trao cho ngân hàng <strong>quyền thu giữ tài sản bảo đảm</strong> của khoản nợ xấu khi hợp đồng bảo đảm
+có thoả thuận và đủ điều kiện — quyền trước đây chỉ có tạm thời theo một nghị quyết thí điểm. Hệ quả cho
+số liệu: <strong>thu hồi nợ đã xử lý</strong> (3.5) và tốc độ giảm nợ nhóm 5 có thể nhanh lên, và đó là thay đổi
+<strong>do luật</strong>, không hẳn do danh mục tốt lên.</p>
+<h3 id="54-cac-han-muc-an-toan">5.4 Các hạn mức an toàn</h3>
+<p>Đây là những ngưỡng ngân hàng <strong>bắt buộc</strong> phải giám sát liên tục, không phải chọn để theo:</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Chỉ tiêu</th>
+<th>Ngưỡng</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hệ số an toàn vốn (CAR)</td>
+<td><strong>≥ 8,0%</strong></td>
+<td>Đệm vốn tối thiểu</td>
+</tr>
+<tr>
+<td>↳ Vốn cấp 1 ÷ RWA</td>
+<td><strong>≥ 6%</strong></td>
+<td>Theo TT 14/2025 — khung cũ TT 41/2016 chỉ đặt ngưỡng tổng CAR</td>
+</tr>
+<tr>
+<td>↳ Vốn cấp 1 cơ bản (CET1) ÷ RWA</td>
+<td><strong>≥ 4,5%</strong></td>
+<td>Theo TT 14/2025</td>
+</tr>
+<tr>
+<td>Tỷ lệ dự trữ thanh khoản</td>
+<td><strong>≥ 10%</strong></td>
+<td>Tài sản thanh khoản cao trên tổng nợ</td>
+</tr>
+<tr>
+<td>Khả năng chi trả 30 ngày (VND)</td>
+<td><strong>≥ 50%</strong></td>
+<td>Chịu được kịch bản rút tiền ngắn hạn</td>
+</tr>
+<tr>
+<td>Cho vay / tổng tiền gửi (LDR quy định)</td>
+<td><strong>≤ 85%</strong></td>
+<td>Không cho vay quá nguồn huy động</td>
+</tr>
+<tr>
+<td>Vốn ngắn hạn cho vay trung–dài hạn</td>
+<td><strong>≤ 40%</strong> <em>(nâng từ 30% trong Q2/2026)</em></td>
+<td>Giới hạn rủi ro kỳ hạn</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Khung vốn mới — Thông tư 14/2025/TT-NHNN</strong> (ban hành 30/6/2025, hiệu lực 15/9/2025, thay TT 41/2016
+theo lộ trình chuyển tiếp — vì vậy hai ca mẫu hiện đang báo cáo theo hai văn bản khác nhau) thêm lần đầu
+các <strong>bộ đệm vốn</strong>: đệm bảo toàn vốn, đệm phản chu kỳ, và đệm cho ngân hàng quan trọng hệ thống; đồng
+thời gắn <strong>điều kiện về vốn cho việc chia cổ tức tiền mặt</strong>. Nghĩa là mục 3.7 ("cổ tức tiền mặt làm CAR
+giảm") giờ chạy <strong>cả hai chiều</strong>: cổ tức làm CAR giảm, và vốn mỏng thì chặn cổ tức.</p>
+<blockquote>
+<p><span class="tag tag-bay">BẪY</span> <strong>Ngưỡng và công thức thay đổi theo thời gian.</strong> Khung CAR đổi văn bản (TT 41/2016 → TT
+14/2025); trần "vốn ngắn hạn cho vay trung–dài hạn" vừa được nâng 30% → 40%; công thức LDR vừa được
+nới (cho tính một phần tiền gửi Kho bạc Nhà nước vào nguồn huy động).</p>
+<p><strong>Nghĩa là một chỉ số tuân thủ có thể "cải thiện" mà không có gì trong ngân hàng thay đổi.</strong> Chuỗi
+thời gian của bất kỳ tỷ lệ tuân thủ nào <strong>bắt buộc phải mang theo phiên bản quy định</strong> — nếu không,
+nó không đọc được.</p>
+</blockquote>
+<h3 id="55-lai-du-thu-thu-nhap-a-ghi-nhung-chua-thu-uoc-tien">5.5 Lãi dự thu — thu nhập đã ghi nhưng chưa thu được tiền</h3>
+<p>Ngân hàng ghi thu nhập lãi theo <strong>dồn tích</strong>: lãi của tháng này được ghi là thu nhập ngay tháng này, dù
+khách chưa trả. Phần đã ghi mà chưa thu được là <strong>lãi dự thu</strong> — một dòng tài sản trên bảng cân đối
+(nằm trong "tài sản Có khác / lãi và phí phải thu").</p>
+<p><span class="tag tag-qd">QĐ</span> Theo <strong>Nghị định 135/2025/NĐ-CP</strong> về chế độ tài chính của TCTD: chỉ khoản nợ <strong>đủ tiêu chuẩn,
+không phải trích dự phòng cụ thể</strong> (tức nhóm 1) mới được hạch toán lãi dự thu vào thu nhập. Lãi của các
+khoản nợ còn lại — <strong>và của cả khoản nợ được giữ nguyên nhóm 1 theo chính sách Nhà nước</strong> — <strong>không</strong>
+được ghi vào thu nhập, mà theo dõi <strong>ngoại bảng</strong>, thu được tiền mới ghi nhận.</p>
+<blockquote class="warn"><p>⚠️ NĐ 135/2025 vừa được sửa bởi <strong>Nghị định 316/2026/NĐ-CP</strong> (ban hành 11/8/2026, hiệu lực
+01/10/2026). Phần sửa được công bố chủ yếu là tỷ lệ trích quỹ và chia cổ tức bằng cổ phiếu; <strong>chưa
+kiểm</strong> phần hạch toán lãi dự thu có bị chạm tới hay không — cần đọc văn bản gốc trước khi dẫn.</p>
+<p><strong>📌 Vì sao người đọc số phải để ý.</strong> Lãi dự thu là <strong>thu nhập kế toán chưa thành tiền</strong>. Nếu lãi dự
+thu tăng nhanh hơn dư nợ nhiều quý liền, thường là khách đang <strong>trả lãi chậm đi</strong> trong khi khoản vay
+vẫn đứng ở nhóm 1 — tức NII đang đẹp hơn dòng tiền thật. Tỷ lệ <em>lãi dự thu ÷ dư nợ</em> là một chỉ báo sớm
+mà NPL không cho thấy. Và chiều ngược lại: khi một khoản vay rớt khỏi nhóm 1, <strong>thu nhập lãi của nó
+ngừng được ghi nhận</strong> — nên nợ xấu tăng làm <strong>NIM giảm</strong>, không chỉ làm chi phí dự phòng tăng.</p>
+</blockquote>
+<h3 id="56-gioi-han-cap-tin-dung-cho-mot-khach-hang-q">5.6 Giới hạn cấp tín dụng cho một khách hàng — <span class="tag tag-qd">QĐ</span></h3>
+<p>Để một khách hàng lớn đổ vỡ không kéo đổ cả ngân hàng, luật chặn dư nợ cấp cho <strong>một khách</strong> và cho <strong>một
+khách cùng người có liên quan</strong> theo tỷ lệ <strong>vốn tự có</strong> của ngân hàng. <strong>Luật các TCTD số 32/2024/QH15</strong>
+(hiệu lực 01/7/2024), Điều 136, siết dần theo lộ trình — áp dụng cho ngân hàng thương mại:</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Giai đoạn</th>
+<th style="text-align: center;">Một khách hàng</th>
+<th style="text-align: center;">Một khách + người có liên quan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01/7/2024 – 31/12/2025</td>
+<td style="text-align: center;">14%</td>
+<td style="text-align: center;">23%</td>
+</tr>
+<tr>
+<td><strong>2026</strong></td>
+<td style="text-align: center;"><strong>13%</strong></td>
+<td style="text-align: center;"><strong>21%</strong></td>
+</tr>
+<tr>
+<td>2027</td>
+<td style="text-align: center;">12%</td>
+<td style="text-align: center;">19%</td>
+</tr>
+<tr>
+<td>2028</td>
+<td style="text-align: center;">11%</td>
+<td style="text-align: center;">17%</td>
+</tr>
+<tr>
+<td>từ 01/01/2029</td>
+<td style="text-align: center;"><strong>10%</strong></td>
+<td style="text-align: center;"><strong>15%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>(Luật cũ là 15% và 25%. TCTD phi ngân hàng có mức riêng: 15% và 25%.)</em></p>
+<blockquote>
+<p><strong>📌 Hệ quả cho phân tích.</strong> (1) Một tập đoàn lớn không vay thêm được ở một ngân hàng thì sẽ sang ngân
+hàng khác, hoặc chuyển sang <strong>phát hành trái phiếu</strong> — đây là một lý do dư nợ KHDN lớn tăng chậm lại
+theo lộ trình. (2) Muốn giám sát giới hạn này, dữ liệu phải có <strong>nhóm khách hàng liên quan</strong> (cùng tập
+đoàn, cùng chủ sở hữu) — một chiều mà bảng khách hàng thông thường không có, và phải dựng riêng.</p>
+</blockquote>
+<h3 id="57-cong-cu-cua-nhnn-cham-thang-vao-so-lieu-tung-ngan-hang-q">5.7 Công cụ của NHNN chạm thẳng vào số liệu từng ngân hàng — <span class="tag tag-qd">QĐ</span></h3>
+<p>Mục 8 nói NHNN tác động lên toàn ngành. Đây là ba công cụ cụ thể và con số hiện hành <em>(tại 09/2026 —
+kiểm lại trước khi dùng)</em>:</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Công cụ</th>
+<th>Mức hiện hành</th>
+<th>Chạm vào chỉ số nào</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dự trữ bắt buộc</strong> — phần tiền gửi phải gửi tại NHNN</td>
+<td>VND: <strong>3%</strong> (kỳ hạn dưới 12 tháng) · <strong>1%</strong> (từ 12 tháng) · Ngoại tệ: <strong>8%</strong> · <strong>6%</strong></td>
+<td>Tiền nằm ở NHNN gần như không sinh lãi → kéo <strong>NIM</strong> xuống; và là lý do dòng "tiền gửi tại NHNN" tồn tại trên bảng cân đối</td>
+</tr>
+<tr>
+<td><strong>Trần lãi suất huy động VND</strong></td>
+<td>không kỳ hạn &amp; dưới 1 tháng: <strong>0,5%/năm</strong> · 1 đến dưới 6 tháng: <strong>4,75%/năm</strong> · từ 6 tháng trở lên: ngân hàng tự quyết</td>
+<td>Chặn cạnh tranh giá ở kỳ hạn ngắn → cạnh tranh dồn vào <strong>kỳ hạn từ 6 tháng</strong> và vào <strong>CASA</strong> (bằng dịch vụ, không bằng lãi suất)</td>
+</tr>
+<tr>
+<td><strong>Hạn mức tăng trưởng tín dụng ("room")</strong></td>
+<td>giao riêng cho từng ngân hàng, mỗi năm, có thể điều chỉnh giữa năm</td>
+<td>Tăng trưởng tín dụng (3.2) và mức sử dụng hạn mức (3.10)</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><span class="tag tag-bay">BẪY</span> <strong>Trần lãi suất làm lãi suất niêm yết của các ngân hàng ở kỳ hạn ngắn trông giống hệt nhau.</strong>
+Nhiều ngân hàng cùng niêm yết đúng 4,75% cho kỳ hạn 1–5 tháng — không phải vì cùng chi phí vốn, mà vì
+cùng đụng trần. Muốn so giá huy động giữa các ngân hàng thì nhìn kỳ hạn <strong>từ 6 tháng trở lên</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="6-chuan-oc-so-ngan-hang-nen">6. Chuẩn đọc số ngân hàng — <span class="tag tag-nen">NỀN</span></h2>
+<p>Phần này ngắn nhưng là phần tiết kiệm nhiều thời gian nhất. Bốn tham số ẩn dưới đây, nếu không khai
+rõ, sẽ làm hai người tính cùng một chỉ số ra hai con số khác nhau và cả hai đều "đúng".</p>
+<h3 id="61-ky-bao-cao-quy-vs-luy-ke-vs-truot-12-thang">6.1 Kỳ báo cáo: quý vs luỹ kế vs trượt 12 tháng</h3>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Kiểu</th>
+<th>Nghĩa</th>
+<th>Đặc điểm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Quý</strong> <em>(quarter only)</em></td>
+<td>chỉ ba tháng đó</td>
+<td>Nhạy với biến động, có tính mùa</td>
+</tr>
+<tr>
+<td><strong>Luỹ kế</strong> <em>(YTD, accumulated)</em></td>
+<td>từ đầu năm đến hết kỳ</td>
+<td>Số công bố của ngân hàng VN <strong>thường là luỹ kế</strong></td>
+</tr>
+<tr>
+<td><strong>Trượt 12 tháng</strong> <em>(TTM/LTM)</em></td>
+<td>bốn quý gần nhất</td>
+<td>Loại bỏ mùa vụ; dùng cho ROE, NIM, chi phí tín dụng</td>
+</tr>
+</tbody>
+</table></div>
+<p>⚠️ Báo cáo Việt Nam thường công bố <strong>luỹ kế</strong>, nên muốn có số quý phải <strong>lấy hiệu hai kỳ luỹ kế liền
+nhau</strong>: <code>Q2 = 6 tháng − 3 tháng</code>. Và muốn có trượt 12 tháng: <code>TTM = luỹ kế kỳ này + cả năm trước − luỹ kế cùng kỳ năm trước</code>.</p>
+<blockquote>
+<p><span class="tag tag-bay">BẪY</span> <strong>Cùng một tên chỉ số, hai kỳ khác nhau, trong cùng một tài liệu.</strong> Ở một ca mẫu, NIM trong
+biểu đồ là <strong>theo quý quy đổi năm</strong> (3,0%) còn NIM trong bảng chỉ số là <strong>luỹ kế quy đổi năm</strong> (2,9%).
+Cả hai đều đúng, và người đọc không được nói cho biết.</p>
+</blockquote>
+<h3 id="62-quy-oi-nam-annualisation">6.2 Quy đổi năm <em>(annualisation)</em></h3>
+<p>Tỷ lệ sinh lời phải cùng đơn vị thời gian với mẫu số. Quy tắc:</p>
+<ul>
+<li>Số luỹ kế 6 tháng → <strong>× 2</strong></li>
+<li>Số của một quý → <strong>× 4</strong></li>
+<li>Số trượt 12 tháng → <strong>không nhân</strong></li>
+</ul>
+<p>Không quy đổi thì ROE 6 tháng trông như bằng nửa ROE năm — và đó là lỗi rất phổ biến.</p>
+<h3 id="63-binh-quan-may-iem">6.3 Bình quân mấy điểm?</h3>
+<p>Mẫu số của mọi tỷ lệ sinh lời là một số <strong>bình quân</strong>, và cách bình quân là một lựa chọn:</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Cách</th>
+<th>Khi nào dùng</th>
+<th>Rủi ro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hai điểm (đầu kỳ, cuối kỳ)</td>
+<td>nhanh, đủ khi số dư tăng đều</td>
+<td>Lệch mạnh nếu số dư nhảy vào cuối kỳ</td>
+</tr>
+<tr>
+<td>Nhiều điểm (mỗi quý một điểm)</td>
+<td>chuẩn cho trượt 12 tháng — <strong>5 điểm</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Bình quân số dư <strong>ngày</strong></td>
+<td>ngân hàng dùng nội bộ</td>
+<td>Người ngoài không tính lại được</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><span class="tag tag-bay">BẪY</span> Chênh lệch giữa các quy ước bình quân có thể tới <strong>hàng chục bps</strong>. Nếu tự tính lại một chỉ
+số công bố mà lệch nhẹ, nguyên nhân số một là <strong>cửa sổ bình quân</strong>, không phải sai số học.</p>
+</blockquote>
+<h3 id="64-hop-nhat-vs-rieng-le">6.4 Hợp nhất vs riêng lẻ</h3>
+<p>Một ngân hàng lớn ở Việt Nam thường là <strong>một tập đoàn</strong>: ngân hàng mẹ cộng công ty chứng khoán, quản
+lý quỹ, bảo hiểm, cho thuê tài chính.</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Phạm vi</th>
+<th>Gồm</th>
+<th>Dùng khi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Riêng lẻ</strong> <em>(bank-only)</em></td>
+<td>chỉ ngân hàng mẹ</td>
+<td>So sánh nghiệp vụ ngân hàng thuần; một số chỉ tiêu tuân thủ</td>
+</tr>
+<tr>
+<td><strong>Hợp nhất</strong> <em>(consolidated)</em></td>
+<td>ngân hàng + công ty con</td>
+<td>Nhìn tổng thể tập đoàn</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><span class="tag tag-bay">BẪY</span> <strong>Một chỉ số có thể được công bố ở phạm vi khác với phạm vi bạn đang so.</strong> Và một sự kiện ở
+công ty con có thể làm biến dạng chỉ số hợp nhất: <strong>một đợt IPO của công ty con làm phình vốn chủ hợp
+nhất mà không tăng tương ứng lợi nhuận → ROE hợp nhất bị kéo xuống một cách máy móc</strong>, dù ngân hàng
+không làm gì tệ hơn.</p>
+</blockquote>
+<h3 id="65-mua-vu-cua-ngan-hang-viet-nam">6.5 Mùa vụ của ngân hàng Việt Nam</h3>
+<p>Số dư ngân hàng không tăng đều trong năm. Ba nhịp lặp lại gần như năm nào cũng có <span class="tag tag-nen">NỀN</span>:</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Thời điểm</th>
+<th>Chuyện gì xảy ra</th>
+<th>Hệ quả cho số liệu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Quý 4, nhất là tháng 12</strong></td>
+<td>tín dụng dồn về cuối năm để dùng hết room và đạt kế hoạch; tiền gửi cũng được kéo vào ngày chốt</td>
+<td>số dư <strong>31/12 phình</strong> so với bình quân năm — ở cả tài sản lẫn nguồn vốn</td>
+</tr>
+<tr>
+<td><strong>Trước và quanh Tết</strong></td>
+<td>dân và doanh nghiệp rút tiền mặt trả lương, thưởng, mua sắm</td>
+<td>thanh khoản căng, <strong>lãi suất liên ngân hàng</strong> thường tăng vọt ngắn hạn</td>
+</tr>
+<tr>
+<td><strong>Quý 1</strong></td>
+<td>tín dụng tăng chậm, có khi âm vài tuần đầu năm (doanh nghiệp trả nợ sau khi thu tiền bán hàng Tết)</td>
+<td>tăng trưởng Q1 thấp <strong>không</strong> tự nó là dấu hiệu xấu</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><span class="tag tag-bay">BẪY</span> <strong>Hệ quả kép của số dư cuối năm phình.</strong> (1) Chỉ số tính trên <strong>số dư cuối kỳ</strong> (LDR, cơ cấu
+nguồn vốn, NPL) đẹp hơn thường ngày vào 31/12. (2) Chỉ số tính trên <strong>bình quân hai điểm</strong> (6.3) bị lệch
+vì một trong hai điểm là điểm phình. Đọc tăng trưởng thì so <strong>cùng kỳ năm trước</strong>, không so quý liền trước.</p>
+</blockquote>
+<hr />
+<h2 id="7-muoi-bon-cam-bay-khi-lam-so-ngan-hang-bay">7. Mười bốn cạm bẫy khi làm số ngân hàng — <span class="tag tag-bay">BẪY</span></h2>
+<p>Bảng tra nhanh. Điểm chung của cả mười bốn: <strong>chúng không báo lỗi</strong> — kết quả vẫn ra một con số trông hợp lý.</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th style="text-align: center;">#</th>
+<th>Bẫy</th>
+<th>Hệ quả</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td>Cộng <strong>số dư</strong> qua nhiều tháng</td>
+<td>Số dư phồng lên gấp số tháng. Số dư là <strong>semi-additive</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td>Lẫn <strong>giải ngân</strong> (flow) với <strong>dư nợ</strong> (stock)</td>
+<td>Sai cả tăng trưởng lẫn rủi ro</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td>Trừ <strong>lợi suất tài sản</strong> cho <strong>chi phí vốn</strong> để ra NIM</td>
+<td>Hai mẫu số khác nhau → thấp hơn NIM thật 30–50 bps</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td>Dùng <strong>CASA</strong> để so <em>mức</em> chi phí vốn giữa các ngân hàng</td>
+<td>Có thể ra kết luận <strong>ngược dấu</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td>Đặt <strong>LDR quy định</strong> cạnh <strong>cho vay/tiền gửi thô</strong></td>
+<td>Chênh hàng chục điểm phần trăm thuần định nghĩa</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td>Xếp hạng ngân hàng bằng <strong>ROE</strong></td>
+<td>Trộn hiệu quả tài sản với lựa chọn đòn bẩy</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td>Chuỗi chỉ số <strong>tuân thủ</strong> không mang phiên bản quy định</td>
+<td>Chỉ số "cải thiện" mà không có gì thay đổi</td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td>Đọc <strong>NPL</strong> như đo lường rủi ro đầy đủ</td>
+<td>Bỏ qua nợ cơ cấu giữ nguyên nhóm, cam kết ngoại bảng, và nợ đã xoá sổ</td>
+</tr>
+<tr>
+<td style="text-align: center;">9</td>
+<td>Ngoại suy một quý có <strong>thu nhập bất thường</strong></td>
+<td>Đánh giá lại tài sản, bán công ty con, thu hồi nợ đã xoá — không lặp lại</td>
+</tr>
+<tr>
+<td style="text-align: center;">10</td>
+<td>Bình quân <strong>giản đơn</strong> của lãi suất, hoặc tính SLA trên toàn kênh khi trường chỉ có ở một kênh</td>
+<td>Con số vô nghĩa nhưng vẫn hiển thị bình thường</td>
+</tr>
+<tr>
+<td style="text-align: center;">11</td>
+<td>Đặt <strong>"tín dụng"</strong> (gồm TPDN) cạnh <strong>"cho vay"</strong>, hoặc hai <strong>"chi phí tín dụng"</strong> khác định nghĩa</td>
+<td>So hai thứ khác nhau cùng một tên (3.2, 3.3)</td>
+</tr>
+<tr>
+<td style="text-align: center;">12</td>
+<td>Coi <strong>nhóm nợ</strong> là thuộc tính của khoản vay</td>
+<td>Nhóm nợ có grain <strong>khách hàng</strong> và bị CIC kéo theo nợ ở ngân hàng khác (5.1)</td>
+</tr>
+<tr>
+<td style="text-align: center;">13</td>
+<td>Cộng <strong>lợi nhuận chi nhánh</strong> rồi so với lợi nhuận toàn hàng, hoặc so hai kỳ khi giá <strong>FTP</strong> đã đổi</td>
+<td>Lệch không bao giờ khớp; thứ hạng chi nhánh đổi mà hoạt động không đổi (4.1)</td>
+</tr>
+<tr>
+<td style="text-align: center;">14</td>
+<td>Đọc số dư <strong>31/12</strong> hoặc chuỗi khách hàng vắt qua <strong>01/01/2025</strong> như ngày thường</td>
+<td>Số cuối năm phình (6.5); gãy chuỗi do quy định sinh trắc học (3.11)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Cách phòng chung, và nó rẻ hơn mọi cách khác:</strong> với mỗi con số dùng để kết luận, làm <strong>một phép kiểm
+số học độc lập</strong> — cộng dọc lại, hoặc tái tạo lại một tỷ lệ đã công bố từ cấu phần. Nếu lệch, đừng đoán
+nguyên nhân: <strong>một chênh lệch không nói cho bạn biết nguyên nhân, nó chỉ nói rằng định nghĩa chưa đúng.</strong></p>
+<hr />
+<h2 id="8-boi-canh-nganh-ngan-hang-viet-nam-nen-q">8. Bối cảnh ngành ngân hàng Việt Nam — <span class="tag tag-nen">NỀN</span> <span class="tag tag-qd">QĐ</span></h2>
+<h3 id="81-bay-ac-thu">8.1 Bảy đặc thù</h3>
+<p>Bảy đặc thù giải thích vì sao các chỉ số ở phần 3 lại quan trọng đúng theo cách đó ở Việt Nam.</p>
+<p><strong>1. Hệ thống gồm những ai.</strong> "Ngân hàng" ở Việt Nam không phải một nhóm đồng nhất, và <strong>so sánh chỉ có
+nghĩa trong cùng nhóm</strong>:</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Nhóm</th>
+<th>Ví dụ</th>
+<th>Đặc điểm để nhớ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NHTM có vốn nhà nước chi phối — thường gọi "Big 4"</td>
+<td>Agribank · Vietcombank · BIDV · VietinBank</td>
+<td>quy mô lớn nhất, chi phí vốn thấp, thường được giao vai trò dẫn dắt chính sách (giảm lãi suất, hỗ trợ ngân hàng yếu)</td>
+</tr>
+<tr>
+<td>NHTM cổ phần tư nhân</td>
+<td>Techcombank · MB · ACB · VPBank · …</td>
+<td>mô hình kinh doanh rất khác nhau giữa các ngân hàng; là nhóm có nhiều ngân hàng niêm yết nhất</td>
+</tr>
+<tr>
+<td>NH 100% vốn nước ngoài · chi nhánh NH nước ngoài</td>
+<td></td>
+<td>nền khách hàng FDI và doanh nghiệp đa quốc gia</td>
+</tr>
+<tr>
+<td>Công ty tài chính tiêu dùng</td>
+<td></td>
+<td>cho vay tín chấp, lãi suất và nợ xấu <strong>cao hơn hẳn</strong> ngân hàng — không đặt cạnh ngân hàng để so</td>
+</tr>
+<tr>
+<td>Ngân hàng chính sách · quỹ tín dụng nhân dân</td>
+<td>NH Chính sách xã hội</td>
+<td>mục tiêu không phải lợi nhuận</td>
+</tr>
+<tr>
+<td>Ngân hàng được <strong>chuyển giao bắt buộc</strong></td>
+<td>các ngân hàng yếu kém được giao cho ngân hàng lớn tiếp nhận</td>
+<td>có cơ chế hỗ trợ riêng (ví dụ ưu đãi dự trữ bắt buộc, room) → làm lệch chỉ số của <strong>ngân hàng nhận chuyển giao</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>2. Hạn mức tăng trưởng tín dụng ("room").</strong> NHNN cấp chỉ tiêu tăng trưởng tín dụng cho từng ngân
+hàng, có thể điều chỉnh trong năm. Hệ quả: <strong>tăng trưởng tín dụng không hoàn toàn là biến kinh doanh</strong> —
+nó là kết quả của cả năng lực bán <em>và</em> hạn mức được cấp. Vì vậy con số tăng trưởng của một ngân hàng
+<strong>phải đọc cạnh tăng trưởng toàn hệ thống</strong>.</p>
+<p><strong>3. NHNN vừa là cơ quan quản lý vừa là người điều hành lãi suất.</strong> Lãi suất điều hành, tỷ giá trung
+tâm, nghiệp vụ thị trường mở đều tác động trực tiếp lên chi phí vốn của mọi ngân hàng cùng lúc. Nghĩa
+là <strong>một phần biến động NIM là biến động toàn ngành</strong>, không phải thành tích riêng.</p>
+<p><strong>4. Cuộc đua CASA.</strong> Vì CASA là nguồn vốn rẻ nhất và mua không được bằng lãi suất, các ngân hàng cạnh
+tranh bằng miễn phí chuyển tiền, app, và hệ sinh thái thanh toán. Đây là lý do CASA ratio là một trong
+những chỉ số được nhắc nhiều nhất ở Việt Nam.</p>
+<p><strong>5. Ngân hàng quốc doanh vs tư nhân là hai mô hình khác nhau, không phải hai mức chất lượng.</strong> Ngân
+hàng có sở hữu nhà nước chi phối thường: xếp hạng tín nhiệm cao hơn → <strong>chi phí vốn thấp hơn</strong>; nền
+khách hàng tổ chức và doanh nghiệp lớn → <strong>lợi suất tài sản thấp hơn</strong>; quy mô lớn và đòn bẩy cao hơn.
+Ngân hàng tư nhân thường nghiêng bán lẻ → biên lãi dày hơn, rủi ro cao hơn, vốn dày hơn. <strong>Hai con
+đường tới cùng một mức ROE.</strong></p>
+<p><strong>6. Hệ sinh thái công ty con.</strong> Nhiều ngân hàng có công ty chứng khoán, quản lý quỹ, bảo hiểm, cho
+thuê tài chính. Điều này (a) tạo ra thu nhập ngoài lãi, (b) làm mọi chỉ số hợp nhất trở thành <strong>chỉ số
+tập đoàn</strong>, và (c) khiến "hợp nhất vs riêng lẻ" trở thành tham số phải khai (mục 6.4).</p>
+<p><strong>7. Bancassurance và tài trợ thương mại là hai dòng phí lớn.</strong> Bán bảo hiểm qua ngân hàng và tài trợ
+thương mại / thanh toán quốc tế là hai nguồn thu ngoài lãi đặc trưng — dòng thứ hai đặc biệt mạnh ở
+ngân hàng có nền khách hàng xuất nhập khẩu và FDI.</p>
+<blockquote>
+<p><strong>Số toàn hệ thống là mốc so bắt buộc.</strong> Một con số tăng trưởng không có mốc ngành là một con số chưa
+đọc được: bạn không phân biệt được <em>"ngân hàng này tăng trưởng tốt"</em> với <em>"cả ngành đang tăng trưởng"</em>.</p>
+</blockquote>
+<h3 id="82-du-lieu-trong-mot-ngan-hang-nam-o-au-nen">8.2 Dữ liệu trong một ngân hàng nằm ở đâu — <span class="tag tag-nen">NỀN</span></h3>
+<p>Người làm phân tích ở ngân hàng hiếm khi chạm vào một hệ thống duy nhất. Bản đồ thô:</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Hệ thống</th>
+<th>Chứa gì</th>
+<th>Grain điển hình</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Core banking</strong> <em>(ngân hàng lõi)</em></td>
+<td>tài khoản, số dư, giao dịch, khoản vay, lãi — <strong>sổ cái nghiệp vụ</strong></td>
+<td>tài khoản × ngày</td>
+</tr>
+<tr>
+<td><strong>LOS / LMS</strong> <em>(khởi tạo &amp; quản lý khoản vay)</em></td>
+<td>hồ sơ vay, thẩm định, phê duyệt, TSBĐ</td>
+<td>hồ sơ · khoản vay</td>
+</tr>
+<tr>
+<td><strong>Hệ thống thẻ</strong></td>
+<td>thẻ, hạn mức, giao dịch thẻ</td>
+<td>thẻ · giao dịch</td>
+</tr>
+<tr>
+<td><strong>Ngân hàng số</strong> <em>(mobile / internet banking)</em></td>
+<td>đăng nhập, hành vi trên app, giao dịch online</td>
+<td>phiên · sự kiện</td>
+</tr>
+<tr>
+<td><strong>CRM</strong></td>
+<td>khách hàng, cơ hội bán, chăm sóc, khiếu nại</td>
+<td>khách · tương tác</td>
+</tr>
+<tr>
+<td><strong>Sổ cái kế toán (GL)</strong></td>
+<td>hạch toán theo tài khoản kế toán — nguồn của <strong>BCTC</strong></td>
+<td>tài khoản GL × ngày</td>
+</tr>
+<tr>
+<td><strong>Kho dữ liệu (DWH / data lake)</strong></td>
+<td>tổng hợp các hệ thống trên, thường chốt <strong>snapshot cuối ngày / cuối tháng</strong></td>
+<td>tuỳ mart</td>
+</tr>
+<tr>
+<td><strong>Nguồn ngoài</strong></td>
+<td><strong>CIC</strong> (lịch sử tín dụng khách trên toàn hệ thống) · <strong>NAPAS</strong> (chuyển mạch thanh toán liên ngân hàng) · báo cáo thống kê gửi NHNN</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Ba khái niệm khoá phải phân biệt ngay từ ngày đầu:</p>
+<ul>
+<li><strong>CIF</strong> <em>(mã khách hàng)</em> ≠ <strong>số tài khoản</strong> ≠ <strong>số hợp đồng vay</strong>. Một khách (một CIF) có nhiều tài khoản
+  và nhiều khoản vay. Đếm "khách hàng" bằng số tài khoản là đếm phồng.</li>
+<li><strong>Số liệu nghiệp vụ</strong> (core banking) và <strong>số liệu kế toán</strong> (GL) của cùng một chỉ tiêu có thể lệch nhau
+  vì thời điểm hạch toán, bút toán điều chỉnh cuối kỳ, lãi dự thu. BCTC đi từ GL; dashboard vận hành
+  thường đi từ core. <strong>Trước khi so dashboard với BCTC, hỏi hai con số đến từ hệ thống nào.</strong></li>
+<li>Khách <strong>doanh nghiệp</strong> và khách <strong>cá nhân</strong> thường nằm ở hai bộ thuộc tính rất khác nhau (ngành, quy mô,
+  nhóm liên quan vs tuổi, thu nhập, phân khúc) — một bảng khách hàng chung cho cả hai hầu như luôn có
+  nửa số cột rỗng ở mỗi bên.</li>
+</ul>
+<hr />
+<h2 id="9-tu-ien-thuat-ngu">9. Từ điển thuật ngữ</h2>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Tiếng Việt</th>
+<th>English</th>
+<th>Là gì</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thu nhập lãi thuần</td>
+<td>Net Interest Income (<strong>NII</strong>)</td>
+<td>Thu lãi − chi lãi</td>
+</tr>
+<tr>
+<td>Biên lãi thuần</td>
+<td>Net Interest Margin (<strong>NIM</strong>)</td>
+<td>NII ÷ tài sản sinh lời bình quân</td>
+</tr>
+<tr>
+<td>Tổng thu nhập hoạt động</td>
+<td>Total Operating Income (<strong>TOI</strong>)</td>
+<td>NII + thu ngoài lãi</td>
+</tr>
+<tr>
+<td>Tỷ lệ chi phí / thu nhập</td>
+<td>Cost-to-Income Ratio (<strong>CIR</strong>)</td>
+<td>OPEX ÷ TOI</td>
+</tr>
+<tr>
+<td>Chi phí vốn</td>
+<td>Cost of funds</td>
+<td>Chi phí lãi ÷ nợ chịu lãi bình quân</td>
+</tr>
+<tr>
+<td>Tài sản sinh lời</td>
+<td>Earning assets</td>
+<td>Tài sản tạo ra lãi</td>
+</tr>
+<tr>
+<td>Nợ chịu lãi</td>
+<td>Interest-bearing liabilities</td>
+<td>Nguồn vốn phải trả lãi</td>
+</tr>
+<tr>
+<td>Tiền gửi không kỳ hạn</td>
+<td><strong>CASA</strong> (Current Account and Savings Account)</td>
+<td>Tiền gửi có thể rút bất cứ lúc nào</td>
+</tr>
+<tr>
+<td>Tỷ lệ nợ xấu</td>
+<td><strong>NPL</strong> ratio (Non-Performing Loan)</td>
+<td>Nhóm 3+4+5 ÷ tổng dư nợ</td>
+</tr>
+<tr>
+<td>Tỷ lệ bao phủ nợ xấu</td>
+<td>Loan-loss coverage / <strong>LLR</strong> coverage</td>
+<td>Dự phòng ÷ nợ xấu</td>
+</tr>
+<tr>
+<td>Chi phí tín dụng</td>
+<td>Credit cost / cost of risk</td>
+<td>Chi phí dự phòng ÷ dư nợ bình quân</td>
+</tr>
+<tr>
+<td>Dự phòng chung / cụ thể</td>
+<td>General / specific provision</td>
+<td>Trích cho danh mục / cho từng khoản</td>
+</tr>
+<tr>
+<td>Tài sản bảo đảm (TSBĐ)</td>
+<td>Collateral</td>
+<td>Tài sản khấu trừ khi tính dự phòng</td>
+</tr>
+<tr>
+<td>Tỷ lệ cho vay / huy động</td>
+<td><strong>LDR</strong> (Loan-to-Deposit Ratio)</td>
+<td>⚠️ có hai định nghĩa, xem 3.6</td>
+</tr>
+<tr>
+<td>Hệ số an toàn vốn</td>
+<td>Capital Adequacy Ratio (<strong>CAR</strong>)</td>
+<td>Vốn tự có ÷ tài sản có rủi ro</td>
+</tr>
+<tr>
+<td>Tài sản có rủi ro</td>
+<td>Risk-Weighted Assets (<strong>RWA</strong>)</td>
+<td>Tài sản đã điều chỉnh theo mức rủi ro</td>
+</tr>
+<tr>
+<td>Lợi nhuận trước / sau thuế</td>
+<td>Profit before / after tax (<strong>PBT/PAT</strong>)</td>
+<td></td>
+</tr>
+<tr>
+<td>Trượt 12 tháng</td>
+<td>Trailing twelve months (<strong>TTM / LTM</strong>)</td>
+<td>Bốn quý gần nhất</td>
+</tr>
+<tr>
+<td>Luỹ kế từ đầu năm</td>
+<td>Year-to-date (<strong>YTD</strong>)</td>
+<td></td>
+</tr>
+<tr>
+<td>Điểm cơ bản</td>
+<td>Basis point (<strong>bps</strong>)</td>
+<td>0,01 điểm phần trăm</td>
+</tr>
+<tr>
+<td>Hợp nhất / riêng lẻ</td>
+<td>Consolidated / standalone</td>
+<td>Có gồm công ty con hay không</td>
+</tr>
+<tr>
+<td>Quản lý tài sản – nợ</td>
+<td>Asset-Liability Management (<strong>ALM</strong>)</td>
+<td>Khớp kỳ hạn và lãi suất hai bên bảng cân đối</td>
+</tr>
+<tr>
+<td>Khách hàng doanh nghiệp / cá nhân</td>
+<td>Corporate / Retail (KHDN / KHCN)</td>
+<td>Hai nửa của danh mục</td>
+</tr>
+<tr>
+<td>Giấy tờ có giá</td>
+<td>Valuable papers / certificates of deposit</td>
+<td>Công cụ nợ ngân hàng phát hành</td>
+</tr>
+<tr>
+<td>Tín dụng <em>(khi nói tăng trưởng tín dụng)</em></td>
+<td>Credit (loans + corporate bonds)</td>
+<td>Thường = cho vay KH + trái phiếu doanh nghiệp nắm giữ — <strong>rộng hơn "cho vay"</strong> (3.2)</td>
+</tr>
+<tr>
+<td>Trái phiếu doanh nghiệp (TPDN)</td>
+<td>Corporate bonds</td>
+<td>Tài sản đầu tư, nhưng mang rủi ro tín dụng như khoản vay</td>
+</tr>
+<tr>
+<td>Lãi dự thu</td>
+<td>Accrued interest receivable</td>
+<td>Lãi đã ghi thu nhập nhưng chưa thu được tiền (5.5)</td>
+</tr>
+<tr>
+<td>Số ngày quá hạn</td>
+<td>Days past due (<strong>DPD</strong>)</td>
+<td>Nguyên liệu thô của nhóm nợ</td>
+</tr>
+<tr>
+<td>Xác suất vỡ nợ · tổn thất khi vỡ nợ · dư nợ tại lúc vỡ nợ</td>
+<td><strong>PD · LGD · EAD</strong></td>
+<td>EL = PD × LGD × EAD</td>
+</tr>
+<tr>
+<td>Tổn thất tín dụng kỳ vọng</td>
+<td>Expected Credit Loss (<strong>ECL</strong>)</td>
+<td>Dự phòng theo IFRS 9</td>
+</tr>
+<tr>
+<td>Vốn cấp 1 cơ bản</td>
+<td>Common Equity Tier 1 (<strong>CET1</strong>)</td>
+<td>Lớp vốn chịu lỗ đầu tiên</td>
+</tr>
+<tr>
+<td>Định giá điều chuyển vốn nội bộ</td>
+<td>Funds Transfer Pricing (<strong>FTP</strong>)</td>
+<td>Giá vốn nội bộ để tính lợi nhuận chi nhánh / sản phẩm (4.1)</td>
+</tr>
+<tr>
+<td>Trung tâm Thông tin tín dụng Quốc gia</td>
+<td><strong>CIC</strong> (Credit Information Center)</td>
+<td>Nơi tổng hợp nhóm nợ của khách trên mọi TCTD</td>
+</tr>
+<tr>
+<td>Mã khách hàng</td>
+<td><strong>CIF</strong> (Customer Information File)</td>
+<td>Một khách = một CIF, nhiều tài khoản</td>
+</tr>
+<tr>
+<td>Hạn mức tăng trưởng tín dụng</td>
+<td>Credit growth quota ("room")</td>
+<td>NHNN giao cho từng ngân hàng</td>
+</tr>
+<tr>
+<td>Dự trữ bắt buộc</td>
+<td>Reserve requirement</td>
+<td>Phần tiền gửi phải gửi tại NHNN (5.7)</td>
+</tr>
+<tr>
+<td>Giới hạn cấp tín dụng</td>
+<td>Single-borrower limit</td>
+<td>% vốn tự có cho một khách / nhóm liên quan (5.6)</td>
+</tr>
+<tr>
+<td>Bảo lãnh · thư tín dụng</td>
+<td>Guarantee · Letter of Credit (<strong>L/C</strong>)</td>
+<td>Cam kết ngoại bảng</td>
+</tr>
+<tr>
+<td>Phòng chống rửa tiền · định danh khách hàng</td>
+<td><strong>AML</strong> · <strong>KYC</strong></td>
+<td>3.11</td>
+</tr>
+<tr>
+<td>Báo cáo giao dịch đáng ngờ</td>
+<td>Suspicious Transaction Report (<strong>STR</strong>)</td>
+<td>Đầu ra của quy trình AML</td>
+</tr>
+<tr>
+<td>Giá ÷ giá trị sổ sách</td>
+<td>Price-to-Book (<strong>P/B</strong>)</td>
+<td>Thước đo định giá chính của cổ phiếu ngân hàng (4.2)</td>
+</tr>
+<tr>
+<td>Khách hàng mới</td>
+<td>New-to-bank (<strong>NTB</strong>)</td>
+<td>Khách lần đầu có quan hệ với ngân hàng</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="10-hai-ca-mau-va-oc-tiep-gi">10. Hai ca mẫu, và đọc tiếp gì</h2>
+<h3 id="101-tcb-va-vcb-dung-e-lam-gi">10.1 TCB và VCB — dùng để làm gì</h3>
+<p>Hai ngân hàng này có mặt trong thư viện <strong>chỉ để minh hoạ</strong>, và chúng được chọn vì <strong>đối lập nhau</strong> —
+nên khoảng giữa chúng cho thấy biên độ của ngành rộng đến đâu.</p>
+<div class="wide"><table>
+<thead>
+<tr>
+<th></th>
+<th>Techcombank</th>
+<th>Vietcombank</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sở hữu</td>
+<td>tư nhân</td>
+<td>nhà nước chi phối</td>
+</tr>
+<tr>
+<td>Nghiêng về</td>
+<td><strong>bán lẻ</strong> — mua nhà, tín chấp, thẻ</td>
+<td><strong>doanh nghiệp</strong> — DN lớn, FDI</td>
+</tr>
+<tr>
+<td>Biên lãi</td>
+<td><strong>dày</strong></td>
+<td>mỏng</td>
+</tr>
+<tr>
+<td>Chi phí vốn</td>
+<td><strong>đắt hơn</strong></td>
+<td>rẻ hơn</td>
+</tr>
+<tr>
+<td>Đòn bẩy</td>
+<td>thấp (đệm vốn dày)</td>
+<td><strong>cao</strong></td>
+</tr>
+<tr>
+<td>Tăng trưởng tín dụng</td>
+<td>nhanh hơn hệ thống</td>
+<td>chậm hơn hệ thống</td>
+</tr>
+<tr>
+<td>Kết quả</td>
+<td>ROA cao hơn, <strong>ROE thấp hơn</strong></td>
+<td>ROA thấp hơn, <strong>ROE cao hơn</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>📌 Không bên nào "tốt hơn".</strong> Đó là hai mô hình kinh doanh, và mỗi mô hình tự nhất quán từ danh mục
+cho vay → cấu trúc vốn → chỉ số cuối cùng. Đây là bài học chuyển được sang mọi ngân hàng khác; các
+con số cụ thể của họ thì không.</p>
+</blockquote>
+<p>⚠️ <strong>Và hai ngân hàng vẫn là quá ít.</strong> Với hai điểm dữ liệu, bạn phân biệt được "của ngành" với "của
+một công ty", nhưng <strong>không</strong> dựng được mức bình quân ngành. Muốn có mốc chuẩn thì cần số toàn hệ thống
+hoặc bình quân nhóm ngân hàng niêm yết.</p>
+<h3 id="102-oc-tiep-trong-thu-vien-nay">10.2 Đọc tiếp trong thư viện này</h3>
+<div class="wide"><table>
+<thead>
+<tr>
+<th>Muốn gì</th>
+<th>Đọc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chi tiết cơ học mô hình hoá: grain, bus matrix, chiều conform</td>
+<td><span class="path" title="01-domain-analysis/README.md">01-domain-analysis/README.md</span></td>
+</tr>
+<tr>
+<td>Cây metric đầy đủ + bảng cạm bẫy dữ liệu</td>
+<td><span class="path" title="02-metrics/README.md">02-metrics/README.md</span></td>
+</tr>
+<tr>
+<td>Quy định phân loại nợ, văn bản gốc, tỷ lệ trích lập</td>
+<td><span class="path" title="02-metrics/npl-classification.md">02-metrics/npl-classification.md</span></td>
+</tr>
+<tr>
+<td>Cách tự tính lại một chỉ số công bố và những chỗ không tính được</td>
+<td><span class="path" title="02-metrics/verification-tcb.md">02-metrics/verification-tcb.md</span> · <span class="path" title="02-metrics/verification-vcb.md">02-metrics/verification-vcb.md</span></td>
+</tr>
+<tr>
+<td>So hai mô hình kinh doanh, và bốn chỉ số <strong>không</strong> so được</td>
+<td><span class="path" title="02-metrics/peer-tcb-vcb.md">02-metrics/peer-tcb-vcb.md</span></td>
+</tr>
+<tr>
+<td>Số liệu gốc của từng ngân hàng</td>
+<td><span class="path" title="references/TCB/">references/TCB/</span> · <span class="path" title="references/VCB/">references/VCB/</span></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="103-cau-tu-kiem">10.3 Câu tự kiểm</h3>
+<p>Trả lời được mười câu đầu thì bạn đã nắm phần cơ bản của domain:</p>
+<ol>
+<li>Ngân hàng kiếm tiền từ ba nguồn nào, và nguồn nào là chính? <em>(phần 1)</em></li>
+<li>NIM có mẫu số là gì, và vì sao <strong>không</strong> phải tổng tài sản? <em>(2.2)</em></li>
+<li>Vì sao không trừ lợi suất tài sản cho chi phí vốn để ra NIM? <em>(2.2, bẫy #3)</em></li>
+<li>Ba loại grain trong một ngân hàng là gì, và cái nào không cộng được qua thời gian? <em>(phần 3)</em></li>
+<li>Phân biệt NPL, chi phí tín dụng, và tỷ lệ bao phủ nợ xấu — mỗi cái trả lời câu gì? <em>(3.3)</em></li>
+<li>Nợ xấu là những nhóm nào, và tỷ lệ trích lập từng nhóm? <em>(5.1)</em></li>
+<li>Vì sao hai khoản cùng nhóm 5 có thể trích lập rất khác nhau? <em>(5.2)</em></li>
+<li><code>ROE = ROA × ?</code> — và vì sao ROE không phải thước đo chất lượng? <em>(phần 4)</em></li>
+<li>"LDR 80%" và "LDR 130%" của hai ngân hàng có thể cùng đúng không? Vì sao? <em>(3.6)</em></li>
+<li>Một tỷ lệ tuân thủ "cải thiện" — hai lý do có thể, ngoài việc ngân hàng làm tốt hơn? <em>(5.4)</em></li>
+</ol>
+<p><strong>Năm câu nâng cao</strong> — dành cho người sắp dựng mô hình hoặc dashboard:</p>
+<ol start="11">
+<li>Một khoản vay chưa quá hạn ngày nào có thể nằm ở nhóm 3 không? Nêu hai con đường. <em>(5.1)</em></li>
+<li>Vì sao nợ xấu tăng làm <strong>NIM</strong> giảm, chứ không chỉ làm chi phí dự phòng tăng? <em>(5.5)</em></li>
+<li>Chi nhánh A chỉ huy động, không cho vay. Làm sao nó có lợi nhuận? Và vì sao lợi nhuận đó là "con số
+    được định nghĩa"? <em>(4.1)</em></li>
+<li>Ngân hàng X báo tăng trưởng tín dụng 8%, ngân hàng Y báo tăng trưởng cho vay 7%. Kết luận X tăng
+    nhanh hơn được chưa? <em>(3.2)</em></li>
+<li>Vì sao không nên so NPL của một ngân hàng đang tăng trưởng 30%/năm với một ngân hàng tăng 10%/năm
+    mà không đọc thêm gì? <em>(3.3 — vintage)</em></li>
+</ol>
+</main>
+</div>
+<div class="scrim" hidden></div><button class="toc-btn" type="button" aria-controls="toc" aria-expanded="false">☰ Mục lục</button>
+<script>
+(function(){
+  var body=document.body, btn=document.querySelector('.toc-btn'), scrim=document.querySelector('.scrim');
+  function openToc(v){ body.classList.toggle('toc-open',v); scrim.hidden=!v; btn.setAttribute('aria-expanded',v); }
+  btn.addEventListener('click',function(){ openToc(!body.classList.contains('toc-open')); });
+  scrim.addEventListener('click',function(){ openToc(false); });
+  document.querySelector('.drawer-head button').addEventListener('click',function(){ openToc(false); });
+  document.querySelectorAll('nav.toc a').forEach(function(a){ a.addEventListener('click',function(){ openToc(false); }); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') openToc(false); });
+
+  var links={}; document.querySelectorAll('nav.toc a').forEach(function(a){ links[a.getAttribute('href').slice(1)]=a; });
+  var heads=[].slice.call(document.querySelectorAll('main h2[id], main h3[id]')).filter(function(h){ return links[h.id]; });
+  var current=null;
+  function spy(){
+    var y=window.innerHeight*0.25, hit=heads[0];
+    for(var i=0;i<heads.length;i++){ if(heads[i].getBoundingClientRect().top<=y) hit=heads[i]; else break; }
+    if(hit && hit!==current){
+      if(current) links[current.id].classList.remove('active');
+      current=hit; var a=links[hit.id]; a.classList.add('active');
+      if(window.matchMedia('(min-width:1080px)').matches){
+        var side=document.querySelector('aside.side'), r=a.getBoundingClientRect(), s=side.getBoundingClientRect();
+        if(r.top<s.top+40||r.bottom>s.bottom-40) side.scrollTop+=r.top-s.top-s.height/3;
+      }
+    }
+  }
+  var t=null; window.addEventListener('scroll',function(){ if(!t) t=requestAnimationFrame(function(){ t=null; spy(); }); },{passive:true});
+  spy();
+})();
+</script>
+</body>
+</html>
