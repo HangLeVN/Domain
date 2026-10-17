@@ -3,18 +3,6 @@
 Ghi chú học theo **ngành**, không theo lần làm việc. Đây là chỗ tri thức ngành tích luỹ và ở lại,
 độc lập với mọi repo framework.
 
-## Vì sao tách riêng
-
-`datapot-analytic-agent-v2` là **engagement-first**: tổ chức theo lần làm việc
-(`work/<ngày>-<slug>/`), và `knowledge/` của nó thuộc về một tổ chức cụ thể. Rất tốt để *làm*,
-nhưng tri thức ngành học được sẽ nằm rải ở N bản clone và không ai đọc lại.
-
-Thư viện này là **domain-first**: một folder một ngành, năm stage cố định. Shape lấy từ repo v1
-(`datapot-analytics-agent/domains/`) — nhưng v1 chỉ có shape, không có nội dung; mọi cơ chế thật
-vẫn nằm ở v2.
-
-**Cách dùng đúng: v2 là công cụ, thư viện này là nơi lưu kết quả.**
-
 ## Registry
 
 | Ngành | Trạng thái | Ghi chú |
